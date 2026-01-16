@@ -1,5 +1,7 @@
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const PageLayout = () => {
 
@@ -18,9 +20,13 @@ const PageLayout = () => {
     flexDirection: 'column',
     overflow: 'auto',
     position: 'relative', 
-    width: '100%'
+    width: '100%',
   }}>
-    <Outlet></Outlet>
+    <Navbar></Navbar>
+    <Outlet>
+      
+    </Outlet>
+    <Footer></Footer>
   </Box>
   
 </Box>
