@@ -17,8 +17,14 @@ import {
 } from "@mui/material";
 
 import img from "../../assets/img.jpg";
+import img1 from "../../assets/img1.jpg";
+import img2 from "../../assets/img2.jpg";
+import img3 from "../../assets/img3.jpg";
+import img4 from "../../assets/img4.jpg";
+
 
 const Home = () => {
+  
   return (
     <Box>
       <Box
@@ -59,56 +65,56 @@ const Home = () => {
           <ListItem sx={{display:"flex",flexDirection:"column" }}>
             <ListItemAvatar>
               <Avatar
-                src="/assets/img1"
+                src={img1}
                 alt="Imagem"
               />
             </ListItemAvatar>
 
             <ListItemText sx={{textAlign:"center"}}
-              primary="Título do item"
-              secondary="Descrição ou texto complementar"
+              primary="Fetch js"
+              secondary="Consumir a API com Javascript puro"
             />
           </ListItem>
 
           <ListItem sx={{display:"flex",flexDirection:"column" }}>
             <ListItemAvatar>
               <Avatar
-                src="/imagem-exemplo.png"
+                src={img2}
                 alt="Imagem"
               />
             </ListItemAvatar>
 
             <ListItemText sx={{textAlign:"center"}}
-              primary="Título do item"
-              secondary="Descrição ou texto complementar"
+              primary="Axios"
+              secondary="Lib para ajudar a consumir API"
             />
           </ListItem>
 
           <ListItem sx={{display:"flex",flexDirection:"column" }}>
             <ListItemAvatar>
               <Avatar
-                src="/imagem-exemplo.png"
+                src={img3}
                 alt="Imagem"
               />
             </ListItemAvatar>
 
             <ListItemText sx={{textAlign:"center"}}
-              primary="Título do item"
-              secondary="Descrição ou texto complementar"
+              primary="CreateAsyncThunk"
+              secondary="Funcionalidade do Redux toolkit"
             />
           </ListItem>
 
           <ListItem sx={{display:"flex",flexDirection:"column" }}>
             <ListItemAvatar>
               <Avatar
-                src="/imagem-exemplo.png"
+                src={img4}
                 alt="Imagem"
               />
             </ListItemAvatar>
 
             <ListItemText sx={{textAlign:"center"}}
-              primary="Título do item"
-              secondary="Descrição ou texto complementar"
+              primary=" RTK Query"
+              secondary="Funcionalidade do Redux toolkit"
             />
           </ListItem>
         </List>
