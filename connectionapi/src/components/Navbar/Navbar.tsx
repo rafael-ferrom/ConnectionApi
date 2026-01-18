@@ -10,12 +10,12 @@ const Navbar = () => {
         Requisition App
       </Typography>
       <Box sx={{display:"flex", justifyContent:"space-between", flexDirection:"row",alignItems: "center",width:"50%"}}>
-        <Link sx={{color:"black"}} href="/">HOME</Link>
-        <Link sx={{color:"black"}} href="/More">MORE</Link>
-        <Link sx={{color:"black"}} href="/Fetch">FETCH</Link>
-        <Link sx={{color:"black"}} href="/Axios"> AXIOS</Link>
-        <Link sx={{color:"black"}} href="/Thunk">THUNK</Link>
-        <Link sx={{color:"black"}} href="/RTK">RTK</Link>
+        <Link underline="hover" sx={{color:"black"}} href="/">HOME</Link>
+        <Link underline="hover" sx={{color:"black"}} href="/More">MORE</Link>
+        <Link underline="hover" sx={{color:"black"}} href="/Fetch">FETCH</Link>
+        <Link underline="hover" sx={{color:"black"}} href="/Axios"> AXIOS</Link>
+        <Link underline="hover" sx={{color:"black"}} href="/Thunk">THUNK</Link>
+        <Link underline="hover" sx={{color:"black"}} href="/RTK">RTK</Link>
       </Box>
       <HomeIcon sx={{ padding: "1rem" }}></HomeIcon>
     </StyledNavbar>

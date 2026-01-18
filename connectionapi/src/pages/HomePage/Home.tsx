@@ -60,7 +60,6 @@ const Home = () => {
       <Box>
         <List
           sx={{
-            backgroundColor: "green",
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -77,7 +76,7 @@ const Home = () => {
 
             <ListItemText sx={{textAlign:"center"}}
               primary={
-                <Link sx={{color:"black"}} href="/Fetch">Fetch</Link>
+                <Link underline="hover" sx={{color:"black"}} href="/Fetch">Fetch</Link>
               }
               secondary="Consumir a API com Javascript puro"
             />
@@ -93,7 +92,7 @@ const Home = () => {
 
             <ListItemText sx={{textAlign:"center"}}
               primary={
-                <Link sx={{color:"black"}} href="/Axios">Axios</Link>
+                <Link underline="hover" sx={{color:"black"}} href="/Axios">Axios</Link>
               }
               secondary="Lib para ajudar a consumir API"
             />
@@ -109,7 +108,7 @@ const Home = () => {
 
             <ListItemText sx={{textAlign:"center"}}
               primary={
-                <Link sx={{color:"black"}} href="/Thunk">CreateAsyncThunk</Link>
+                <Link underline="hover" sx={{color:"black"}} href="/Thunk">CreateAsyncThunk</Link>
               }
               secondary="Funcionalidade do Redux toolkit"
             />
@@ -125,7 +124,7 @@ const Home = () => {
 
             <ListItemText sx={{textAlign:"center"}}
               primary={
-                <Link sx={{color:"black"}} href="/RTK">RTK Query</Link>
+                <Link underline="hover" sx={{color:"black"}} href="/RTK">RTK Query</Link>
               }
               secondary="Funcionalidade do Redux toolkit"
             />
