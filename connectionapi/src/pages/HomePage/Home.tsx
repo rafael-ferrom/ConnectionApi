@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   Button,
+  Link,
   List,
   ListItem,
   ListItemAvatar,
@@ -21,10 +22,14 @@ import img1 from "../../assets/img1.jpg";
 import img2 from "../../assets/img2.jpg";
 import img3 from "../../assets/img3.jpg";
 import img4 from "../../assets/img4.jpg";
+import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
   
+  const navigate = useNavigate()
+  console.log(navigate);
+
   return (
     <Box>
       <Box
@@ -71,7 +76,9 @@ const Home = () => {
             </ListItemAvatar>
 
             <ListItemText sx={{textAlign:"center"}}
-              primary="Fetch js"
+              primary={
+                <Link sx={{color:"black"}} href="/Fetch">Fetch</Link>
+              }
               secondary="Consumir a API com Javascript puro"
             />
           </ListItem>
@@ -85,7 +92,9 @@ const Home = () => {
             </ListItemAvatar>
 
             <ListItemText sx={{textAlign:"center"}}
-              primary="Axios"
+              primary={
+                <Link sx={{color:"black"}} href="/Axios">Axios</Link>
+              }
               secondary="Lib para ajudar a consumir API"
             />
           </ListItem>
@@ -99,7 +108,9 @@ const Home = () => {
             </ListItemAvatar>
 
             <ListItemText sx={{textAlign:"center"}}
-              primary="CreateAsyncThunk"
+              primary={
+                <Link sx={{color:"black"}} href="/Thunk">CreateAsyncThunk</Link>
+              }
               secondary="Funcionalidade do Redux toolkit"
             />
           </ListItem>
@@ -113,7 +124,9 @@ const Home = () => {
             </ListItemAvatar>
 
             <ListItemText sx={{textAlign:"center"}}
-              primary=" RTK Query"
+              primary={
+                <Link sx={{color:"black"}} href="/RTK">RTK Query</Link>
+              }
               secondary="Funcionalidade do Redux toolkit"
             />
           </ListItem>
