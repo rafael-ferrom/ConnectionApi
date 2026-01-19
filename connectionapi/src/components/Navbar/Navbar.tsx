@@ -1,8 +1,11 @@
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Button, Link, Typography } from "@mui/material";
 import { StyledNavbar } from "./style/Style";
 import HomeIcon from "@mui/icons-material/Home";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
 
   return (
     <StyledNavbar>
@@ -17,7 +20,7 @@ const Navbar = () => {
         <Link underline="hover" sx={{color:"black"}} href="/Thunk">THUNK</Link>
         <Link underline="hover" sx={{color:"black"}} href="/RTK">RTK</Link>
       </Box>
-      <HomeIcon sx={{ padding: "1rem" }}></HomeIcon>
+      <Button onClick={() => navigate("/")}><HomeIcon sx={{ padding: "1rem" }}></HomeIcon></Button>
     </StyledNavbar>
   );
 };

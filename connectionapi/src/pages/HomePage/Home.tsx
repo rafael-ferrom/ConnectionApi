@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   Button,
+  Checkbox,
   Link,
   List,
   ListItem,
@@ -24,11 +25,44 @@ import img3 from "../../assets/img3.jpg";
 import img4 from "../../assets/img4.jpg";
 import { useNavigate } from "react-router-dom";
 
+interface ColumnItem {
+  id:number
+  label:string
+}
+
+interface RownItem{
+  id:number
+  name:string
+  hasExternalLib: boolean
+  hasAutomaticCache: boolean
+  hasLoading: boolean
+  goodForBigProjects:boolean
+  bigLearningCourve: boolean
+}
+
 
 const Home = () => {
+
+  const ColumnTable: ColumnItem[] = [
+    {id:1, label:""},
+    {id:2, label:"Biblioteca externa"},
+    {id:3, label:"Cache automatico"},
+    {id:4, label:"Gerenciamento de loading automatico"},
+    {id:5, label:"Ideal para projetos grandes"},
+    {id:6, label:"Curva de aprendizado alto"}
+  ]
+
+  const RowsTable: RownItem[] = [
+    {id:1, name:"Fetch",hasExternalLib:false,hasAutomaticCache:false,hasLoading:false,goodForBigProjects:false, bigLearningCourve:false},
+    {id:2, name:"Axios",hasExternalLib:true,hasAutomaticCache:false,hasLoading:false,goodForBigProjects:false, bigLearningCourve:false},
+    {id:1, name:"CreateAsyncThunk",hasExternalLib:true,hasAutomaticCache:false,hasLoading:false,goodForBigProjects:true, bigLearningCourve:true},
+    {id:1, name:"RTK",hasExternalLib:true,hasAutomaticCache:true,hasLoading:true,goodForBigProjects:true, bigLearningCourve:true}
+  ]
+
+  console.log(RowsTable);
+  
   
   const navigate = useNavigate()
-  console.log(navigate);
 
   return (
     <Box>
@@ -48,12 +82,12 @@ const Home = () => {
         }}
       >
         <Typography variant="h2" color="white">
-          HOME
+          Requisition App
         </Typography>
-        <Typography variant="h5" color="white">
-          Subtitle
+        <Typography variant="h5" color="white" sx={{marginTop:"1rem"}}>
+          Essa aplicação busca mostrar formas de como consumir uma API e suas vantagens e desvantagens
         </Typography>
-        <Button sx={{ color: "white", backgroundColor: "orange" }}>
+        <Button onClick={() => navigate("/More")} sx={{ color: "white", backgroundColor: "orange", marginTop:"2rem"}}>
           Learn more
         </Button>
       </Box>
@@ -137,19 +171,24 @@ const Home = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>1</TableCell>
-                <TableCell>2</TableCell>
-                <TableCell>3</TableCell>
-                <TableCell>4</TableCell>
+                {ColumnTable.map((column) =>(
+                  <TableCell key={column.id}>{column.label}</TableCell>
+                ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell>a</TableCell>
-                <TableCell>b</TableCell>
-                <TableCell>c</TableCell>
-                <TableCell>d</TableCell>
-              </TableRow>
+              
+                {RowsTable.map((row) =>(
+                  <TableRow key={row.id}>
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.hasExternalLib ? <Checkbox disabled checked></Checkbox>: <Checkbox disabled></Checkbox> }</TableCell>
+                    <TableCell>{row.hasAutomaticCache ? <Checkbox disabled checked></Checkbox>: <Checkbox disabled></Checkbox>}</TableCell>
+                    <TableCell>{row.hasLoading ? <Checkbox disabled checked></Checkbox>: <Checkbox disabled></Checkbox>}</TableCell>
+                    <TableCell>{row.goodForBigProjects ? <Checkbox disabled checked></Checkbox>: <Checkbox disabled></Checkbox>}</TableCell>
+                    <TableCell>{row.bigLearningCourve ? <Checkbox disabled checked></Checkbox>: <Checkbox disabled></Checkbox>}</TableCell>
+                  </TableRow>
+                ))}
+              
             </TableBody>
           </Table>
         </TableContainer>
