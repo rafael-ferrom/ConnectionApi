@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PageLayout from "./Layout/PageLayout";
 import Home from "./pages/HomePage/Home";
-import TryCatch from "./pages/TryCatchPage/TryCatch";
+
 import AxiosPage from "./pages/AxiosPage/AxiosPage";
 import Thunk from "./pages/ThunkPage/Thunk";
 import Rtk from "./pages/RtkPage/Rtk";
+import FetchPage from "./pages/FetchPage/FetchPage";
+import MoreInfo from "./pages/MoreInfoPage/MoreInfo";
 
 
 function App() {
@@ -19,19 +21,23 @@ function App() {
         element: <Home></Home> ,
       },
       {
-        path: "/Home",
-        element: <TryCatch></TryCatch> ,
+        path:"/More",
+        element:<MoreInfo></MoreInfo>
       },
       {
-        path: "/VacationStatus",
+        path: "/Fetch",
+        element: <FetchPage></FetchPage> ,
+      },
+      {
+        path: "/Axios",
         element: <AxiosPage></AxiosPage>,
       },
       {
-        path: "/AllInformations",
+        path: "/Thunk",
         element: <Thunk></Thunk>,
       },
       {
-        path: "/UsersOnVacation",
+        path: "/RTK",
         element: <Rtk></Rtk> ,
       },
 

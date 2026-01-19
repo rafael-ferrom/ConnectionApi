@@ -1,12 +1,23 @@
-import { Box, Typography } from "@mui/material"
+import {
+  Box,
+} from "@mui/material";
+
+import StartCard from "../../components/StartCard/StartCard";
+import ListOptions from "../../components/ListOptions/ListOptions";
+import TableProperties from "../../components/TableProperties/TableProperties";
 
 
-const Home = () => {
+
+
+const Home = () => {  
+
   return (
     <Box>
-        <Typography>HOME</Typography>
+      <StartCard/>
+      <ListOptions/>
+      <TableProperties/>
     </Box>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
