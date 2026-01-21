@@ -24,6 +24,6 @@ export const ColumnTable: ColumnItemHome[] = [
 export const RowsTable: RownItemHome[] = [
     {id:1, name:"Fetch",hasExternalLib:false,hasAutomaticCache:false,hasLoading:false,goodForBigProjects:false, bigLearningCourve:false},
     {id:2, name:"Axios",hasExternalLib:true,hasAutomaticCache:false,hasLoading:false,goodForBigProjects:false, bigLearningCourve:false},
-    {id:3, name:"CreateAsyncThunk",hasExternalLib:true,hasAutomaticCache:false,hasLoading:false,goodForBigProjects:true, bigLearningCourve:true},
+    {id:3, name:"Thunk",hasExternalLib:true,hasAutomaticCache:false,hasLoading:false,goodForBigProjects:true, bigLearningCourve:true},
     {id:4, name:"RTK",hasExternalLib:true,hasAutomaticCache:true,hasLoading:true,goodForBigProjects:true, bigLearningCourve:true}
   ]
