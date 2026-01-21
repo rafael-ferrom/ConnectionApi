@@ -12,3 +12,11 @@ export interface RownItemHome{
   goodForBigProjects:boolean
   bigLearningCourve: boolean
 }
+
+export interface ListOption{
+    id: number
+    img: string
+    subtitle: string
+    route: string
+    title:string
+}

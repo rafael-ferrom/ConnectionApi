@@ -9,7 +9,6 @@ import Footer from "../components/Footer/Footer";
   return (
     <Box
       sx={{
-        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
       }}
