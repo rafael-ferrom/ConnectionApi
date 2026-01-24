@@ -1,5 +1,6 @@
 
 import type { CreateUserDTO } from "../dtos/CreateUserDTO";
+import type { UpdateUserDTO } from "../dtos/UpdateUserDTO";
 import type { IUsersJPH } from "../models/User";
 import { fetchURL } from "../utils/Url";
 
@@ -25,6 +26,26 @@ export async function createUser(
 ): Promise<IUsersJPH> {
   const response = await fetch(fetchURL, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  })
+
+  if (!response.ok) {
+    throw new Error(`Erro HTTP: ${response.status}`)
+  }
+
+  const data: IUsersJPH = await response.json()
+  return data
+}
+
+export async function updateUser(
+  id: number,
+  body: UpdateUserDTO
+): Promise<IUsersJPH> {
+  const response = await fetch(`${fetchURL}/${id}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json"
     },
