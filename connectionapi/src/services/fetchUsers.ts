@@ -59,3 +59,20 @@ export async function updateUser(
   const data: IUsersJPH = await response.json()
   return data
 }
+
+export async function deleteUser(id: number): Promise<void> {
+  try {
+    const response = await fetch(
+      `${fetchURL}/${id}`,
+      { method: "DELETE" }
+    )
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`)
+    }
+
+  } catch (error) {
+    console.error("Erro ao deletar usuário:", error)
+    throw error
+  }
+}
