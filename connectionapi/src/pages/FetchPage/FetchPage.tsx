@@ -65,7 +65,6 @@ const FetchPage = () => {
     try {
       await createUser(formData);
 
-      // Limpar o formulário após sucesso
       setFormData({
         name: "",
         email: "",
@@ -131,7 +130,7 @@ const FetchPage = () => {
           margin: "2rem",
         }}
       >
-        <TableContainer sx={{ border: "2px solid red" }}>
+        <TableContainer >
           <Table>
             <TableHead>
               <TableRow>
@@ -205,15 +204,10 @@ const FetchPage = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h4">Divisao 3</Typography>
+          <Typography variant="h4">GET</Typography>
           {data?.map((dt) => (
-            <Typography>{dt.name}</Typography>
+            <Typography>{dt.id} - {dt.name}</Typography>
           ))}
-          <Button
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Get
-          </Button>
         </Grid>
         <Grid
           size={3}
@@ -222,13 +216,13 @@ const FetchPage = () => {
             padding: 2,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            justifyContent: "space-evenly",
             alignItems: "center",
           }}
         >
-          <Typography variant="h4">Divisao 3</Typography>
-          <Box component="form" onSubmit={handleSubmitPost}>
-            <Box>
+          <Typography variant="h4">POST</Typography>
+          <Box component="form" onSubmit={handleSubmitPost} >
+            <Box sx={{margin:"1rem"}}>
               <TextField
                 label="nome"
                 name="name"
@@ -238,7 +232,7 @@ const FetchPage = () => {
                 onChange={handleChange}
               ></TextField>
             </Box>
-            <Box>
+            <Box sx={{margin:"1rem"}}>
               <TextField
                 label="E-mail"
                 name="email"
@@ -249,7 +243,7 @@ const FetchPage = () => {
                 onChange={handleChange}
               ></TextField>
             </Box>
-            <Box>
+            <Box sx={{margin:"1rem"}}>
               <TextField
                 label="username"
                 name="username"
@@ -260,7 +254,7 @@ const FetchPage = () => {
                 onChange={handleChange}
               ></TextField>
             </Box>
-            <Box>
+            <Box sx={{margin:"1rem"}}>
               <TextField
                 label="Website"
                 name="website"
@@ -271,7 +265,7 @@ const FetchPage = () => {
                 onChange={handleChange}
               ></TextField>
             </Box>
-            <Box>
+            <Box sx={{margin:"1rem"}}>
               <TextField
                 label="Phone"
                 name="phone"
@@ -285,16 +279,11 @@ const FetchPage = () => {
             <Button
               type="submit"
               variant="contained"
-              sx={{ width: "80%", height: "4rem", backgroundColor: "yellow" }}
+              sx={{ width: "80%", height: "4rem", backgroundColor: "yellow", margin:"1rem" }}
             >
-              AAAAAA
+              POST
             </Button>
           </Box>
-          <Button
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Post
-          </Button>
         </Grid>
         <Grid
           size={3}
@@ -303,11 +292,11 @@ const FetchPage = () => {
             padding: 2,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            justifyContent: "space-evenly",
             alignItems: "center",
           }}
         >
-          <Typography variant="h4">Divisao 3</Typography>
+          <Typography variant="h4">PUT</Typography>
           <Box component="form" onSubmit={handleSubmitPut}>
             <Box>
               <TextField
@@ -315,6 +304,7 @@ const FetchPage = () => {
                 value={userId}
                 label="ID"
                 onChange={(e) => setUserId(Number(e.target.value))}
+                sx={{margin:"1rem"}}
               ></TextField>
             </Box>
             <Box>
@@ -323,6 +313,7 @@ const FetchPage = () => {
                 value={name}
                 label="Name"
                 onChange={(e) => setName(e.target.value)}
+                sx={{margin:"1rem"}}
               ></TextField>
             </Box>
             <Box>
@@ -331,19 +322,16 @@ const FetchPage = () => {
                 value={email}
                 label="email"
                 onChange={(e) => setEmail(e.target.value)}
+                sx={{margin:"1rem"}}
               ></TextField>
             </Box>
-            <Button type="submit"
+            <Button type="submit" variant="contained"
               sx={{ width: "80%", height: "4rem", backgroundColor: "yellow" }}
             >
               Put
             </Button>
           </Box>
-          <Button
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Put
-          </Button>
+          
         </Grid>
         <Grid
           size={3}
@@ -352,25 +340,21 @@ const FetchPage = () => {
             padding: 2,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            justifyContent: "space-evenly",
             alignItems: "center",
           }}
         >
-          <Typography variant="h4">Divisao 3</Typography>
+          <Typography variant="h4">DELETE</Typography>
           <Box>
-            <TextField type="number" value={userId} onChange={e => setUserId(Number(e.target.value))} label="ID do usuário">
+            <TextField type="number" value={userId} onChange={e => setUserId(Number(e.target.value))} label="ID do usuário" sx={{margin:"1rem"}}>
 
             </TextField>
-            <Button onClick={handleDelete} sx={{ width: "80%", height: "4rem", backgroundColor: "yellow" }}>
+            <Button onClick={handleDelete} variant="contained" sx={{ width: "80%", height: "4rem", backgroundColor: "yellow", margin:"1rem" }}>
               Delete
             </Button>
             {message && <Typography>{message}</Typography>}
           </Box>
-          <Button
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Delete
-          </Button>
+          
         </Grid>
       </Grid>
     </Box>
