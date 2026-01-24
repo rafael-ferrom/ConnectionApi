@@ -1,6 +1,9 @@
+
+import type { CreateUserDTO } from "../dtos/CreateUserDTO";
+import type { IUsersJPH } from "../models/User";
 import { fetchURL } from "../utils/Url";
 
-export async function fetchData() {
+export async function fetchData():Promise<IUsersJPH[]> {
   try {
     const response = await fetch(fetchURL)
 
@@ -15,4 +18,23 @@ export async function fetchData() {
     console.error("Erro ao buscar dados:", error)
     throw error
   }
+}
+
+export async function createUser(
+  body: CreateUserDTO
+): Promise<IUsersJPH> {
+  const response = await fetch(fetchURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  })
+
+  if (!response.ok) {
+    throw new Error(`Erro HTTP: ${response.status}`)
+  }
+
+  const data: IUsersJPH = await response.json()
+  return data
 }
