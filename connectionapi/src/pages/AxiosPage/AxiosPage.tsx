@@ -1,8 +1,27 @@
 import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { ColumnTable, RowsTable } from "../../utils/Consts";
+import { useEffect, useState } from "react";
+import type { Post } from "../../models/Post";
+import { getAxiosPost } from "../../services/axiosPosts";
 
 const AxiosPage = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Axios");
+  const [posts, setPosts] = useState<Post[]>([])
+  
+  
+  useEffect(() => {
+    async function loadPosts(){
+      try{
+        const data = await getAxiosPost()
+        setPosts(data)
+      }
+      catch(err){
+        console.error(err)
+        throw err
+      }
+    }
+    loadPosts()
+  })
 
   return (
     <Box
@@ -82,11 +101,14 @@ const AxiosPage = () => {
       </Box>
       <Grid sx={{ width: "80%", height: "40rem", marginBottom:"2rem",textAlign:"center", backgroundColor:"gray"  }} container spacing={2}>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
+          <Typography variant="h4">GET</Typography>
+          {posts?.slice(0, 15).map((post) => (
+            <Typography>{post.title}</Typography>
+          ))}
           <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Get</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
+          <Typography variant="h4"></Typography>
           <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
