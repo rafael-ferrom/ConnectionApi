@@ -2,12 +2,24 @@ import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContaine
 import { ColumnTable, RowsTable } from "../../utils/Consts";
 import { useEffect, useState } from "react";
 import type { Post } from "../../models/Post";
-import { getAxiosPost } from "../../services/axiosPosts";
+import { getAxiosPost, postAxiosPost } from "../../services/axiosPosts";
 
 const AxiosPage = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Axios");
   const [posts, setPosts] = useState<Post[]>([])
-  
+  const [postSubmited, setPostSubmited] = useState<boolean>(false)
+
+  const handlePost = async (e: React.FormEvent) => {
+  e.preventDefault()
+
+  try {
+    await postAxiosPost();
+    setPostSubmited(true);
+  } catch (err) {
+    console.error("Erro na requisição:", err);
+  }
+}
+
   
   useEffect(() => {
     async function loadPosts(){
@@ -17,11 +29,10 @@ const AxiosPage = () => {
       }
       catch(err){
         console.error(err)
-        throw err
       }
     }
     loadPosts()
-  })
+  },[])
 
   return (
     <Box
@@ -108,8 +119,18 @@ const AxiosPage = () => {
           <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Get</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4"></Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
+          <Typography variant="h4">Post</Typography>
+          <Box component="form" onSubmit={handlePost} >
+            <Box sx={{margin:"1rem"}}>
+              <Typography>Aqui temos um user mockado que sera enviado</Typography>
+            <Button 
+              type="submit"
+              variant="contained"
+              sx={{ width: "80%", height: "4rem", backgroundColor: "yellow", margin:"1rem" }} 
+              >Submit</Button>
+            {postSubmited ? <Typography>Verifique o console</Typography> : <></>}
+            </Box>
+          </Box>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Divisao 3</Typography>
