@@ -2,7 +2,7 @@ import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContaine
 import { ColumnTable, RowsTable } from "../../utils/Consts";
 import { useEffect, useState } from "react";
 import type { Post } from "../../models/Post";
-import { getAxiosPost, postAxiosPost, putAxiosPost } from "../../services/axiosPosts";
+import { deleteAxiosPost, getAxiosPost, postAxiosPost, putAxiosPost } from "../../services/axiosPosts";
 
 const AxiosPage = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Axios");
@@ -14,6 +14,16 @@ const AxiosPage = () => {
     id: 201,
     title: "teste",
     body: "testeMock",
+  }
+
+  const handleDelete = async()  => {
+    try{
+      await deleteAxiosPost(5)
+    }
+    catch(err){
+      console.error(err)
+      throw err
+    }
   }
 
   const handleUpdate = async(e: React.FormEvent) => {
@@ -162,8 +172,11 @@ const AxiosPage = () => {
           
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
+          <Typography variant="h4">Delete</Typography>
+          <Box component="form" onSubmit={handleDelete}>
+            <Typography>Aqui temos um user mockado que sera enviado</Typography>
+            <Button type="submit" sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
+          </Box>
         </Grid>
       </Grid>
     </Box>
