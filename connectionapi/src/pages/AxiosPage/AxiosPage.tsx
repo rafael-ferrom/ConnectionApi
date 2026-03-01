@@ -16,7 +16,9 @@ const AxiosPage = () => {
     body: "testeMock",
   }
 
-  const handleDelete = async()  => {
+  const handleDelete = async(e: React.FormEvent)  => {
+    e.preventDefault()
+
     try{
       await deleteAxiosPost(5)
     }
@@ -145,37 +147,38 @@ const AxiosPage = () => {
           {posts?.slice(0, 15).map((post) => (
             <Typography>{post.title}</Typography>
           ))}
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Get</Button>
+          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem", }}>Get</Button>
         </Grid>
-        <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
+       <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Post</Typography>
-          <Box component="form" onSubmit={handlePost} >
-            <Box sx={{margin:"1rem"}}>
+          <Box component="form" onSubmit={handlePost} sx={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Box sx={{ margin: "1rem", textAlign: "center" }}>
               <Typography>Aqui temos um user mockado que sera enviado</Typography>
-            <Button 
-              type="submit"
-              variant="contained"
-              sx={{ width: "80%", height: "4rem", backgroundColor: "yellow", margin:"1rem" }} 
+              <Button 
+                type="submit"
+                variant="contained"
+                sx={{ width: "80%", height: "4rem", backgroundColor: "yellow", margin: "1rem" }} 
               >Submit</Button>
-            {postSubmited ? <Typography>Verifique o console</Typography> : <></>}
+              {postSubmited ? <Typography>Verifique o console</Typography> : <></>}
             </Box>
           </Box>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">PUT</Typography>
-          <Box component="form" onSubmit={handleUpdate}>
-            <Box>
+          <Box component="form" onSubmit={handleUpdate} sx={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Box sx={{ textAlign: "center" }}>
               <Typography>Aqui temos um user mockado que sera enviado</Typography>
-              <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}} type="submit">Put</Button>
+              <Button sx={{ backgroundColor: "blue", width: "10rem" }} type="submit">Put</Button>
             </Box>
           </Box>
-          
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Delete</Typography>
-          <Box component="form" onSubmit={handleDelete}>
-            <Typography>Aqui temos um user mockado que sera enviado</Typography>
-            <Button type="submit" sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
+          <Box component="form" onSubmit={handleDelete} sx={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Box sx={{ textAlign: "center" }}>
+              <Typography>Aqui temos um user mockado que sera enviado</Typography>
+              <Button type="submit" sx={{ backgroundColor: "blue", width: "10rem" }}>Delete</Button>
+            </Box>
           </Box>
         </Grid>
       </Grid>
