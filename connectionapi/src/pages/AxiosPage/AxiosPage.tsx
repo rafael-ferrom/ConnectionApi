@@ -2,12 +2,31 @@ import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContaine
 import { ColumnTable, RowsTable } from "../../utils/Consts";
 import { useEffect, useState } from "react";
 import type { Post } from "../../models/Post";
-import { getAxiosPost, postAxiosPost } from "../../services/axiosPosts";
+import { getAxiosPost, postAxiosPost, putAxiosPost } from "../../services/axiosPosts";
 
 const AxiosPage = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Axios");
   const [posts, setPosts] = useState<Post[]>([])
   const [postSubmited, setPostSubmited] = useState<boolean>(false)
+
+  const mockPost:Post = {
+    userId: 11,
+    id: 201,
+    title: "teste",
+    body: "testeMock",
+  }
+
+  const handleUpdate = async(e: React.FormEvent) => {
+    e.preventDefault()
+
+    try{
+      await putAxiosPost(5, mockPost)
+    }
+    catch(err){
+      console.error(err)
+      throw err
+    }
+  }
 
   const handlePost = async (e: React.FormEvent) => {
   e.preventDefault()
@@ -133,8 +152,14 @@ const AxiosPage = () => {
           </Box>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
+          <Typography variant="h4">PUT</Typography>
+          <Box component="form" onSubmit={handleUpdate}>
+            <Box>
+              <Typography>Aqui temos um user mockado que sera enviado</Typography>
+              <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}} type="submit">Put</Button>
+            </Box>
+          </Box>
+          
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Divisao 3</Typography>
