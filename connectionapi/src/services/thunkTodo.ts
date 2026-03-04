@@ -33,3 +33,14 @@ export const deleteThunkTodo = createAsyncThunk<number, number>(thunkURL, async 
         return rejectWithValue("Erro ao criar usuário");
     }
 } )
+
+export const editThunkTodo = createAsyncThunk<toDo, toDo>(thunkURL, async(toDo,{rejectWithValue}) => {
+    try{
+        const result = await axios.put(`${thunkURL}/${toDo.id}`)
+        return result.data
+    }
+    catch{
+        return rejectWithValue("Erro ao criar usuário");
+    }
+
+})
