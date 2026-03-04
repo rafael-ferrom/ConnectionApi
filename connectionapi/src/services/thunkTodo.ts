@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { thunkURL } from "../utils/Url";
 import { type toDo } from "../models/toDo";
 import axios from "axios";
+import type { CreateTodoDTO } from "../dtos/CreateTodoDTO";
 
 export const getThunkPost = createAsyncThunk<toDo[]>( thunkURL, async(_, {rejectWithValue}) => {
     try{
@@ -12,3 +13,13 @@ export const getThunkPost = createAsyncThunk<toDo[]>( thunkURL, async(_, {reject
         return rejectWithValue("Erro ao buscar usuários");
     }
 })
+
+export const createUser = createAsyncThunk<toDo, CreateTodoDTO>(thunkURL, async ( toDo, {rejectWithValue}) => {
+    try{
+        const result = await axios.post<toDo>(thunkURL, toDo)
+        return result.data
+    }
+    catch{
+        return rejectWithValue("Erro ao criar usuário");
+    }
+}) 
