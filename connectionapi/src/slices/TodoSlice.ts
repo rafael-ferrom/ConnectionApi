@@ -20,7 +20,7 @@ const initialState: todoState = {
 };
 
 export const todoSlice = createSlice({
-  name: "todoSlice",
+  name: "todo",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -92,3 +92,5 @@ export const todoSlice = createSlice({
       });
   },
 });
+
+export default todoSlice.reducer
