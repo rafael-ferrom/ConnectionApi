@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { toDo } from "../models/toDo";
-import { getThunkTodo } from "../services/thunkTodo";
+import { createThunkTodo, getThunkTodo } from "../services/thunkTodo";
 
 interface todoState {
     todos: toDo[]
@@ -32,6 +32,19 @@ export const todoSlice = createSlice({
         .addCase(getThunkTodo.rejected, (state, action) => {
             state.loading = false
             state.error = (action.payload as string) || action.error.message ||"Error ao retornar  os toDo"
+        })
+
+        .addCase(createThunkTodo.pending, (state) => {
+            state.error = null
+            state.loading = true
+        })
+        .addCase(createThunkTodo.fulfilled, (state, action) => {
+            state.loading = false
+            state.todos.push(action.payload)
+        })
+        .addCase(createThunkTodo.rejected, (state, action) => {
+            state.loading = false
+            state.error = (action.payload as string) || "Erro na criação"
         })
     },
 })
