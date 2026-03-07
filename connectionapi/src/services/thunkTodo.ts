@@ -36,7 +36,7 @@ export const deleteThunkTodo = createAsyncThunk<number, number>(thunkURL, async 
 
 export const editThunkTodo = createAsyncThunk<toDo, toDo>(thunkURL, async(toDo,{rejectWithValue}) => {
     try{
-        const result = await axios.put(`${thunkURL}/${toDo.id}`)
+        const result = await axios.put(`${thunkURL}/${toDo.id}`, toDo)
         return result.data
     }
     catch{
