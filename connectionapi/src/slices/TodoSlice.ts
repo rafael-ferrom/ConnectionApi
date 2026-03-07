@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { toDo } from "../models/toDo";
 import {
   createThunkTodo,
+  deleteThunkTodo,
   editThunkTodo,
   getThunkTodo,
 } from "../services/thunkTodo";
@@ -67,9 +68,27 @@ export const todoSlice = createSlice({
           state.todos[index] = action.payload;
         }
       })
-      .addCase(editThunkTodo.rejected,(state,action) =>{
-        state.loading = false
-        state.error = (action.payload as string) || "Erro na edição"
+      .addCase(editThunkTodo.rejected, (state, action) => {
+        state.loading = false;
+        state.error = (action.payload as string) || "Erro na edição";
       })
+      .addCase(deleteThunkTodo.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+
+      .addCase(deleteThunkTodo.fulfilled, (state, action) => {
+        state.loading = false;
+
+        state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      })
+
+      .addCase(deleteThunkTodo.rejected, (state, action) => {
+        state.loading = false;
+        state.error =
+          (action.payload as string) ||
+          action.error.message ||
+          "Erro ao deletar todo";
+      });
   },
 });
