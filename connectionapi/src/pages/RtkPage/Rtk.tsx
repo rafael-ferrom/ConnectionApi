@@ -1,6 +1,6 @@
 import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { ColumnTable, RowsTable } from "../../utils/Consts";
-import { useCreateCommentMutation, useEditCommentMutation, useGetCommentsQuery } from "../../services/rtkComments";
+import { useCreateCommentMutation, useDeleteCommentMutation, useEditCommentMutation, useGetCommentsQuery } from "../../services/rtkComments";
 import type { Comment } from "../../models/Comment";
 
 const Rtk = () => {
@@ -8,7 +8,7 @@ const Rtk = () => {
   const {data} = useGetCommentsQuery()
   const [createComment ] = useCreateCommentMutation()
   const [editComment] = useEditCommentMutation()
-
+  const [deleteComponent] = useDeleteCommentMutation()
 
   const mockComment: Comment = {
     postId: 10,
@@ -40,6 +40,16 @@ const editCommentVar: Comment = {
     try{
       await editComment(editCommentVar)
     }
+    catch(err){
+      console.log(err);
+      
+    }
+  }
+
+  const handleDelete = async() => {
+    try{
+      await deleteComponent(5)
+    } 
     catch(err){
       console.log(err);
       
@@ -140,8 +150,8 @@ const editCommentVar: Comment = {
           <Button onClick={handleEdit} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
+          <Typography variant="h4">Delete</Typography>
+          <Button onClick={handleDelete} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
         </Grid>
       </Grid>
       </Box>
