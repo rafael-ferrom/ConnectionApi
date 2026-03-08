@@ -2,13 +2,21 @@ import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContaine
 import { ColumnTable, RowsTable } from "../../utils/Consts";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useEffect } from "react";
-import { createThunkTodo, getThunkTodo } from "../../services/thunkTodo";
+import { createThunkTodo, editThunkTodo, getThunkTodo } from "../../services/thunkTodo";
 import type { CreateTodoDTO } from "../../dtos/CreateTodoDTO";
+import type { toDo } from "../../models/toDo";
 
 const Thunk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Thunk");
   const dispatch = useAppDispatch()
   const {todos} = useAppSelector(state => state.todos )
+
+  const todo:toDo = {
+    id:100,
+    userId: 11,
+    title:"New",
+    completed: false
+  }
 
   const mockTodo: CreateTodoDTO = {
     userId: 11,
@@ -16,12 +24,22 @@ const Thunk = () => {
     completed: true
   }
 
+  
+
   useEffect(() =>{
     dispatch(getThunkTodo())
   },[])
 
   const handleCreate = () => {
     dispatch(createThunkTodo(mockTodo))
+  }
+
+  const handleEdit = (todo: toDo) => {
+    const updateTodo:toDo = {
+    ...todo,
+    title: "titulo atalizado"
+  }
+    dispatch(editThunkTodo(updateTodo))
   }
 
 
@@ -111,12 +129,12 @@ const Thunk = () => {
           </Box>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
+          <Typography variant="h4">Post</Typography>
           <Button onClick={handleCreate} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
+          <Typography variant="h4">Put</Typography>
+          <Button onClick={() => handleEdit(todo)} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Divisao 3</Typography>
