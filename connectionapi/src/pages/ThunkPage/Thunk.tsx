@@ -2,7 +2,7 @@ import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContaine
 import { ColumnTable, RowsTable } from "../../utils/Consts";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useEffect } from "react";
-import { createThunkTodo, editThunkTodo, getThunkTodo } from "../../services/thunkTodo";
+import { createThunkTodo, deleteThunkTodo, editThunkTodo, getThunkTodo } from "../../services/thunkTodo";
 import type { CreateTodoDTO } from "../../dtos/CreateTodoDTO";
 import type { toDo } from "../../models/toDo";
 
@@ -24,7 +24,9 @@ const Thunk = () => {
     completed: true
   }
 
-  
+  const handleDelete = (id: number) => {
+    dispatch(deleteThunkTodo(id))
+  }
 
   useEffect(() =>{
     dispatch(getThunkTodo())
@@ -137,8 +139,8 @@ const Thunk = () => {
           <Button onClick={() => handleEdit(todo)} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
+          <Typography variant="h4">Delete</Typography>
+          <Button onClick={() => handleDelete(5)} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
         </Grid>
       </Grid>
       </Box>
