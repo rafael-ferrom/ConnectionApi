@@ -8,7 +8,13 @@ export const commentServiceRtk = createApi({
     endpoints: (builder) => ({
         getComments: builder.query<Comment[], void>({
             query: () => 'comments'
-        }), 
+        }),
+        getCommentById: builder.query<Comment, number>({
+            query: (id) => `comments/${id}`
+        }),
+        
+        
+         
     })
 })
 
