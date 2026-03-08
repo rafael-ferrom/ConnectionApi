@@ -12,7 +12,7 @@ export const commentServiceRtk = createApi({
         getCommentById: builder.query<Comment, number>({
             query: (id) => `comments/${id}`
         }),
-        createComment: builder.mutation<Comment, Comment>({
+        createComment: builder.mutation<Comment,Comment>({
             query: (newComment) => ({
                 url: 'comments',
                 method: 'POST',
@@ -35,3 +35,4 @@ export const commentServiceRtk = createApi({
     })
 })
 
+export const {useGetCommentsQuery, useGetCommentByIdQuery, useCreateCommentMutation, useEditCommentMutation, useDeleteCommentMutation } = commentServiceRtk
