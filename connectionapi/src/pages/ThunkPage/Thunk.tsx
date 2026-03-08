@@ -2,16 +2,27 @@ import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContaine
 import { ColumnTable, RowsTable } from "../../utils/Consts";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useEffect } from "react";
-import { getThunkTodo } from "../../services/thunkTodo";
+import { createThunkTodo, getThunkTodo } from "../../services/thunkTodo";
+import type { CreateTodoDTO } from "../../dtos/CreateTodoDTO";
 
 const Thunk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Thunk");
   const dispatch = useAppDispatch()
   const {todos} = useAppSelector(state => state.todos )
 
+  const mockTodo: CreateTodoDTO = {
+    userId: 11,
+    title:"New mock",
+    completed: true
+  }
+
   useEffect(() =>{
     dispatch(getThunkTodo())
-  })
+  },[])
+
+  const handleCreate = () => {
+    dispatch(createThunkTodo(mockTodo))
+  }
 
 
     return (
@@ -101,7 +112,7 @@ const Thunk = () => {
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
+          <Button onClick={handleCreate} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Divisao 3</Typography>
