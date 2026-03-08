@@ -26,6 +26,12 @@ export const commentServiceRtk = createApi({
                 body: updatedComment
             })
         }),
+        deleteComment: builder.mutation<Comment, number>({
+            query: (id) => ({
+                url:`comments/${id}`,
+                method:'DELETE'
+            })
+        }) 
     })
 })
 
