@@ -1,12 +1,14 @@
 import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { ColumnTable, RowsTable } from "../../utils/Consts";
-import { useCreateCommentMutation, useGetCommentsQuery } from "../../services/rtkComments";
+import { useCreateCommentMutation, useEditCommentMutation, useGetCommentsQuery } from "../../services/rtkComments";
 import type { Comment } from "../../models/Comment";
 
 const Rtk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "RTK");
   const {data} = useGetCommentsQuery()
   const [createComment ] = useCreateCommentMutation()
+  const [editComment] = useEditCommentMutation()
+
 
   const mockComment: Comment = {
     postId: 10,
@@ -16,9 +18,27 @@ const Rtk = () => {
     body:"testeee"
   }
 
+const editCommentVar: Comment = {
+  postId:1,
+  id: 5,
+  name: "Rafa",
+  email: "rafa@email.com",
+  body: "Comentário atualizado"
+}
+
   const handleCreate = async() => {
     try{
       await createComment(mockComment)
+    }
+    catch(err){
+      console.log(err);
+      
+    }
+  }
+
+  const handleEdit = async() => {
+    try{
+      await editComment(editCommentVar)
     }
     catch(err){
       console.log(err);
@@ -116,8 +136,8 @@ const Rtk = () => {
           <Button onClick={handleCreate} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
+          <Typography variant="h4">Put</Typography>
+          <Button onClick={handleEdit} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Divisao 3</Typography>
