@@ -19,6 +19,7 @@ import { createUser, deleteUser, fetchData, updateUser } from "../../services/fe
 import type { IUsersJPH } from "../../models/User";
 import type { CreateUserDTO } from "../../dtos/CreateUserDTO";
 import type { UpdateUserDTO } from "../../dtos/UpdateUserDTO";
+import ContainerRequisitionGetFetch from "../../components/ContainerRequisitionGetFetch/ContainerRequisitionGetFetch";
 
 const FetchPage = () => {
   const [data, setData] = useState<IUsersJPH[]>([]);
@@ -193,22 +194,7 @@ const FetchPage = () => {
         container
         spacing={2}
       >
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">GET</Typography>
-          {data?.map((dt) => (
-            <Typography>{dt.id} - {dt.name}</Typography>
-          ))}
-        </Grid>
+        <ContainerRequisitionGetFetch title="GET" data={data}/>
         <Grid
           size={3}
           sx={{
