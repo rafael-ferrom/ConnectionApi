@@ -19,6 +19,13 @@ export const commentServiceRtk = createApi({
                 body: newComment
             }) 
         }),
+        editComment: builder.mutation<Comment, Comment>({
+            query: (updatedComment) => ({
+                url: `comments/${updatedComment.id}`,
+                method: 'PUT',
+                body: updatedComment
+            })
+        }),
     })
 })
 
