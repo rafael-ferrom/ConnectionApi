@@ -1,10 +1,30 @@
 import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { ColumnTable, RowsTable } from "../../utils/Consts";
-import { useGetCommentsQuery } from "../../services/rtkComments";
+import { useCreateCommentMutation, useGetCommentsQuery } from "../../services/rtkComments";
+import type { Comment } from "../../models/Comment";
 
 const Rtk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "RTK");
   const {data} = useGetCommentsQuery()
+  const [createComment ] = useCreateCommentMutation()
+
+  const mockComment: Comment = {
+    postId: 10,
+    id:201,
+    name:"irineu",
+    email:"irineu@gmail.com",
+    body:"testeee"
+  }
+
+  const handleCreate = async() => {
+    try{
+      await createComment(mockComment)
+    }
+    catch(err){
+      console.log(err);
+      
+    }
+  }
   
     return (
       <Box
@@ -92,8 +112,8 @@ const Rtk = () => {
           ))}
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
+          <Typography variant="h4">Post</Typography>
+          <Button onClick={handleCreate} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Divisao 3</Typography>
