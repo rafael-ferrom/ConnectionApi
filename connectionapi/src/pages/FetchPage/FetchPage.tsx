@@ -20,6 +20,7 @@ import type { IUsersJPH } from "../../models/User";
 import type { CreateUserDTO } from "../../dtos/CreateUserDTO";
 import type { UpdateUserDTO } from "../../dtos/UpdateUserDTO";
 import ContainerRequisitionGetFetch from "../../components/ContainerRequisitionGetFetch/ContainerRequisitionGetFetch";
+import ContainerRequisitionPostFetch from "../../components/ContainerRequisitionPostFetch/ContainerRequisitionPostFetch";
 
 const FetchPage = () => {
   const [data, setData] = useState<IUsersJPH[]>([]);
@@ -195,82 +196,7 @@ const FetchPage = () => {
         spacing={2}
       >
         <ContainerRequisitionGetFetch title="GET" data={data}/>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">POST</Typography>
-          <Box component="form" onSubmit={handleSubmitPost} >
-            <Box sx={{margin:"1rem"}}>
-              <TextField
-                label="nome"
-                name="name"
-                variant="outlined"
-                fullWidth
-                value={formData.name}
-                onChange={handleChange}
-              ></TextField>
-            </Box>
-            <Box sx={{margin:"1rem"}}>
-              <TextField
-                label="E-mail"
-                name="email"
-                type="email"
-                variant="outlined"
-                fullWidth
-                value={formData.email}
-                onChange={handleChange}
-              ></TextField>
-            </Box>
-            <Box sx={{margin:"1rem"}}>
-              <TextField
-                label="username"
-                name="username"
-                type="username"
-                variant="outlined"
-                fullWidth
-                value={formData.username}
-                onChange={handleChange}
-              ></TextField>
-            </Box>
-            <Box sx={{margin:"1rem"}}>
-              <TextField
-                label="Website"
-                name="website"
-                type="website"
-                variant="outlined"
-                fullWidth
-                value={formData.website}
-                onChange={handleChange}
-              ></TextField>
-            </Box>
-            <Box sx={{margin:"1rem"}}>
-              <TextField
-                label="Phone"
-                name="phone"
-                type="phone"
-                variant="outlined"
-                fullWidth
-                value={formData.phone}
-                onChange={handleChange}
-              ></TextField>
-            </Box>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ width: "80%", height: "4rem", backgroundColor: "yellow", margin:"1rem" }}
-            >
-              POST
-            </Button>
-          </Box>
-        </Grid>
+        <ContainerRequisitionPostFetch title="POST" formData={formData} handleChange={handleChange} handlePost={handleSubmitPost}></ContainerRequisitionPostFetch>
         <Grid
           size={3}
           sx={{
