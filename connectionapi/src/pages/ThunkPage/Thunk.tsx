@@ -1,9 +1,50 @@
 import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { ColumnTable, RowsTable } from "../../utils/Consts";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useEffect } from "react";
+import { createThunkTodo, deleteThunkTodo, editThunkTodo, getThunkTodo } from "../../services/thunkTodo";
+import type { CreateTodoDTO } from "../../dtos/CreateTodoDTO";
+import type { toDo } from "../../models/toDo";
 
 const Thunk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Thunk");
-  
+  const dispatch = useAppDispatch()
+  const {todos} = useAppSelector(state => state.todos )
+
+  const todo:toDo = {
+    id:100,
+    userId: 11,
+    title:"New",
+    completed: false
+  }
+
+  const mockTodo: CreateTodoDTO = {
+    userId: 11,
+    title:"New mock",
+    completed: true
+  }
+
+  const handleDelete = (id: number) => {
+    dispatch(deleteThunkTodo(id))
+  }
+
+  useEffect(() =>{
+    dispatch(getThunkTodo())
+  },[])
+
+  const handleCreate = () => {
+    dispatch(createThunkTodo(mockTodo))
+  }
+
+  const handleEdit = (todo: toDo) => {
+    const updateTodo:toDo = {
+    ...todo,
+    title: "titulo atalizado"
+  }
+    dispatch(editThunkTodo(updateTodo))
+  }
+
+
     return (
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -82,20 +123,24 @@ const Thunk = () => {
         </Box>
         <Grid sx={{ width: "80%", height: "40rem", marginBottom:"2rem",textAlign:"center", backgroundColor:"gray"  }} container spacing={2}>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Get</Button>
+          <Typography variant="h4"> Get </Typography>
+          <Box>
+            {todos.slice(0,15).map((t) =>(
+              <Typography key={t.id}>{t.title}</Typography>
+            ))}
+          </Box>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
+          <Typography variant="h4">Post</Typography>
+          <Button onClick={handleCreate} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
+          <Typography variant="h4">Put</Typography>
+          <Button onClick={() => handleEdit(todo)} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
+          <Typography variant="h4">Delete</Typography>
+          <Button onClick={() => handleDelete(5)} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
         </Grid>
       </Grid>
       </Box>
