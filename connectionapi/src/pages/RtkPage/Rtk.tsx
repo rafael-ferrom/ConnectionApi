@@ -1,8 +1,10 @@
 import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { ColumnTable, RowsTable } from "../../utils/Consts";
+import { useGetCommentsQuery } from "../../services/rtkComments";
 
 const Rtk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "RTK");
+  const {data} = useGetCommentsQuery()
   
     return (
       <Box
@@ -82,8 +84,12 @@ const Rtk = () => {
         </Box>
         <Grid sx={{ width: "80%", height: "40rem", marginBottom:"2rem",textAlign:"center", backgroundColor:"gray"  }} container spacing={2}>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Divisao 3</Typography>
-          <Button sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Get</Button>
+          <Typography variant="h4">Get</Typography>
+          {data?.slice(0,7).map((c) => (
+            <Box key={c.id}>
+              <Typography>{c.name}</Typography>
+            </Box>
+          ))}
         </Grid>
         <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
           <Typography variant="h4">Divisao 3</Typography>
