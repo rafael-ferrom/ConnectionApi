@@ -27,3 +27,10 @@ export interface IinfoFieldsFormProps {
   value: string | undefined;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export interface IInfosFormDeleteSection<T extends string | number> {
+  type: string;
+  value: T;
+  label: string;
+  setValue: (value: string) => void;
+}

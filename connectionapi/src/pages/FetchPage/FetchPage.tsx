@@ -15,12 +15,12 @@ import {
 import { ColumnTable, RowsTable } from "../../utils/Consts";
 import { useEffect, useState } from "react";
 
-import { createUser, deleteUser, fetchData, updateUser } from "../../services/fetchUsers";
+import { createUser, deleteUser, fetchData } from "../../services/fetchUsers";
 import type { IUsersJPH } from "../../models/User";
 import type { CreateUserDTO } from "../../dtos/CreateUserDTO";
-import type { UpdateUserDTO } from "../../dtos/UpdateUserDTO";
 import ContainerRequisitionGetFetch from "../../components/ContainerRequisitionGetFetch/ContainerRequisitionGetFetch";
 import ContainerRequisitionPostFetch from "../../components/ContainerRequisitionPostFetch/ContainerRequisitionPostFetch";
+import ContainerRequisitionEditFetch from "../../components/ContainerRequisitionEditFetch/ContainerRequisitionEditFetch";
 
 const FetchPage = () => {
   const [data, setData] = useState<IUsersJPH[]>([]);
@@ -35,7 +35,7 @@ const FetchPage = () => {
   const [userId, setUserId] = useState<number>(1);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [message, setMessage] = useState<string>("")
+  const [message, setMessage] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -45,21 +45,7 @@ const FetchPage = () => {
     }));
   };
 
-  const handleSubmitPut = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const payload: UpdateUserDTO = {
-      name,
-      email,
-    };
-
-    try {
-       await updateUser(userId, payload);
-
-    } catch (error) {
-      console.error("Erro ao atualizar usuário", error);
-    }
-  };
+  
 
   const handleSubmitPost = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -197,54 +183,7 @@ const FetchPage = () => {
       >
         <ContainerRequisitionGetFetch title="GET" data={data}/>
         <ContainerRequisitionPostFetch title="POST" formData={formData} handleChange={handleChange} handlePost={handleSubmitPost}></ContainerRequisitionPostFetch>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">PUT</Typography>
-          <Box component="form" onSubmit={handleSubmitPut}>
-            <Box>
-              <TextField
-                type="number"
-                value={userId}
-                label="ID"
-                onChange={(e) => setUserId(Number(e.target.value))}
-                sx={{margin:"1rem"}}
-              ></TextField>
-            </Box>
-            <Box>
-              <TextField
-                type="text"
-                value={name}
-                label="Name"
-                onChange={(e) => setName(e.target.value)}
-                sx={{margin:"1rem"}}
-              ></TextField>
-            </Box>
-            <Box>
-              <TextField
-                type="email"
-                value={email}
-                label="email"
-                onChange={(e) => setEmail(e.target.value)}
-                sx={{margin:"1rem"}}
-              ></TextField>
-            </Box>
-            <Button type="submit" variant="contained"
-              sx={{ width: "80%", height: "4rem", backgroundColor: "yellow" }}
-            >
-              Put
-            </Button>
-          </Box>
-          
-        </Grid>
+        <ContainerRequisitionEditFetch name={name} email={email} setName={setName} setEmail={setEmail}/>
         <Grid
           size={3}
           sx={{
