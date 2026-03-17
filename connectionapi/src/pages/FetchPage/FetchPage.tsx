@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Checkbox,
   Grid,
   Table,
@@ -9,7 +8,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TextField,
   Typography,
 } from "@mui/material";
 import { ColumnTable, RowsTable } from "../../utils/Consts";
@@ -21,6 +19,7 @@ import type { CreateUserDTO } from "../../dtos/CreateUserDTO";
 import ContainerRequisitionGetFetch from "../../components/ContainerRequisitionGetFetch/ContainerRequisitionGetFetch";
 import ContainerRequisitionPostFetch from "../../components/ContainerRequisitionPostFetch/ContainerRequisitionPostFetch";
 import ContainerRequisitionEditFetch from "../../components/ContainerRequisitionEditFetch/ContainerRequisitionEditFetch";
+import ContainerRequisitionDeleteFech from "../../components/ContainerRequisitionDeleteFetch/ContainerRequisitionDeleteFech";
 
 const FetchPage = () => {
   const [data, setData] = useState<IUsersJPH[]>([]);
@@ -184,29 +183,7 @@ const FetchPage = () => {
         <ContainerRequisitionGetFetch title="GET" data={data}/>
         <ContainerRequisitionPostFetch title="POST" formData={formData} handleChange={handleChange} handlePost={handleSubmitPost}></ContainerRequisitionPostFetch>
         <ContainerRequisitionEditFetch name={name} email={email} setName={setName} setEmail={setEmail}/>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">DELETE</Typography>
-          <Box>
-            <TextField type="number" value={userId} onChange={e => setUserId(Number(e.target.value))} label="ID do usuário" sx={{margin:"1rem"}}>
-
-            </TextField>
-            <Button onClick={handleDelete} variant="contained" sx={{ width: "80%", height: "4rem", backgroundColor: "yellow", margin:"1rem" }}>
-              Delete
-            </Button>
-            {message && <Typography>{message}</Typography>}
-          </Box>
-          
-        </Grid>
+        <ContainerRequisitionDeleteFech handleDelete={handleDelete} message={message} setUserId={setUserId} userId={userId}/>
       </Grid>
     </Box>
   );
