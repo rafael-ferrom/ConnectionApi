@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import SectionFormFieldsPost from './SectionFormFieldsPost'
 import type { IinfoFieldsFormProps } from '../../../types'
-import { StyledButtonPostFetch } from '../../../style/StyledButtonPostFetch'
+import { StyledButtonPostFetch } from '../../../style/StyledButtonRequisition'
 
 interface IFormFieldPostFetch {
     handleSubmitPost: (e: React.FormEvent) => void,

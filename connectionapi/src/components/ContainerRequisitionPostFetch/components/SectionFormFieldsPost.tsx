@@ -1,5 +1,5 @@
-import { StyledBoxPostFetch } from "../../../style/StyledBoxPostFetch"
-import { StyledTextFieldPostFetch } from "../../../style/StyledTextFieldPostFetch"
+import { StyledBoxPostFetch } from "../../../style/StyledBoxRequisition"
+import { StyledTextFieldPostFetch } from "../../../style/StyledTextFieldRequisition"
 import type { IinfoFieldsFormProps } from "../../../types"
 
 interface ISectionFormFieldsPostProps{

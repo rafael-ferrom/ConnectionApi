@@ -1,4 +1,4 @@
-import { StyledButtonPostFetch } from "../../../style/StyledButtonPostFetch"
+import { StyledButtonPostFetch } from "../../../style/StyledButtonRequisition"
 
 interface IButtonDeleteFetchProps{
     handleDelete: () => void
