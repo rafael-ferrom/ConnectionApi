@@ -1,16 +1,9 @@
 import {
   Box,
-  Checkbox,
   Grid,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Typography,
 } from "@mui/material";
-import { ColumnTable, RowsTable } from "../../utils/Consts";
+import { RowsTable } from "../../utils/Consts";
 import { useEffect, useState } from "react";
 
 import { createUser, deleteUser, fetchData } from "../../services/fetchUsers";
@@ -20,6 +13,7 @@ import ContainerRequisitionGetFetch from "../../components/ContainerRequisitionG
 import ContainerRequisitionPostFetch from "../../components/ContainerRequisitionPostFetch/ContainerRequisitionPostFetch";
 import ContainerRequisitionEditFetch from "../../components/ContainerRequisitionEditFetch/ContainerRequisitionEditFetch";
 import ContainerRequisitionDeleteFech from "../../components/ContainerRequisitionDeleteFetch/ContainerRequisitionDeleteFech";
+import TableInfos from "../../components/TableInfos/TableInfos";
 
 const FetchPage = () => {
   const [data, setData] = useState<IUsersJPH[]>([]);
@@ -117,57 +111,7 @@ const FetchPage = () => {
           margin: "2rem",
         }}
       >
-        <TableContainer >
-          <Table>
-            <TableHead>
-              <TableRow>
-                {ColumnTable.map((col) => (
-                  <TableCell key={col.id}>{col.label}</TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow key={specifyRequisition?.id}>
-                <TableCell>{specifyRequisition?.name}</TableCell>
-                <TableCell>
-                  {specifyRequisition?.hasExternalLib ? (
-                    <Checkbox disabled checked></Checkbox>
-                  ) : (
-                    <Checkbox disabled></Checkbox>
-                  )}
-                </TableCell>
-                <TableCell>
-                  {specifyRequisition?.hasAutomaticCache ? (
-                    <Checkbox disabled checked></Checkbox>
-                  ) : (
-                    <Checkbox disabled></Checkbox>
-                  )}
-                </TableCell>
-                <TableCell>
-                  {specifyRequisition?.hasLoading ? (
-                    <Checkbox disabled checked></Checkbox>
-                  ) : (
-                    <Checkbox disabled></Checkbox>
-                  )}
-                </TableCell>
-                <TableCell>
-                  {specifyRequisition?.goodForBigProjects ? (
-                    <Checkbox disabled checked></Checkbox>
-                  ) : (
-                    <Checkbox disabled></Checkbox>
-                  )}
-                </TableCell>
-                <TableCell>
-                  {specifyRequisition?.bigLearningCourve ? (
-                    <Checkbox disabled checked></Checkbox>
-                  ) : (
-                    <Checkbox disabled></Checkbox>
-                  )}
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <TableInfos specifyRequisition={specifyRequisition}/>
       </Box>
       <Grid
         sx={{
