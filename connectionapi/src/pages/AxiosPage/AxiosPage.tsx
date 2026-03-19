@@ -9,6 +9,7 @@ import {
   putAxiosPost,
 } from "../../services/axiosPosts";
 import TableInfos from "../../components/TableInfos/TableInfos";
+import ContainerRequisitionGetAxios from "../../components/ContainerRequisitionGetAxios/ContainerRequisitionGetAxios";
 
 const AxiosPage = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Axios");
@@ -104,27 +105,7 @@ const AxiosPage = () => {
         container
         spacing={2}
       >
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">GET</Typography>
-          {posts?.slice(0, 15).map((post) => (
-            <Typography>{post.title}</Typography>
-          ))}
-          <Button
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Get
-          </Button>
-        </Grid>
+       <ContainerRequisitionGetAxios posts={posts}/>
         <Grid
           size={3}
           sx={{
