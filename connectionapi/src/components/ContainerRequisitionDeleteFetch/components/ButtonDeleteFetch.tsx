@@ -1,4 +1,4 @@
-import { StyledButtonPostFetch } from "../../../style/StyledButtonRequisition"
+import { StyledButtonRequisition } from "../../../style/StyledButtonRequisition"
 
 interface IButtonDeleteFetchProps{
     handleDelete: () => void
@@ -6,7 +6,7 @@ interface IButtonDeleteFetchProps{
 
 const ButtonDeleteFetch = ({handleDelete}:IButtonDeleteFetchProps) => {
   return (
-    <StyledButtonPostFetch onClick={handleDelete} variant="contained"/>
+    <StyledButtonRequisition onClick={handleDelete} variant="contained"/>
   )
 }
 

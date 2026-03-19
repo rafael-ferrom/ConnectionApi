@@ -1,4 +1,4 @@
-import { StyledButtonPostFetch } from "../../../style/StyledButtonRequisition";
+import { StyledButtonRequisition } from "../../../style/StyledButtonRequisition";
 
 interface IButtonDeleteProps{
     nameRequisition: string
@@ -6,13 +6,13 @@ interface IButtonDeleteProps{
 
 const ButtonDelete = ({nameRequisition}:IButtonDeleteProps) => {
   return (
-    <StyledButtonPostFetch
+    <StyledButtonRequisition
       type="submit"
       variant="contained"
       sx={{ width: "80%", height: "4rem", backgroundColor: "yellow" }}
     >
       {nameRequisition}
-    </StyledButtonPostFetch>
+    </StyledButtonRequisition>
   );
 };
 
