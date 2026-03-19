@@ -10,6 +10,7 @@ import {
 } from "../../services/axiosPosts";
 import TableInfos from "../../components/TableInfos/TableInfos";
 import ContainerRequisitionGetAxios from "../../components/ContainerRequisitionGetAxios/ContainerRequisitionGetAxios";
+import ContainerRequistionPostAxios from "../../components/ContainerRequistionPostAxios/ContainerRequistionPostAxios";
 
 const AxiosPage = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Axios");
@@ -105,53 +106,11 @@ const AxiosPage = () => {
         container
         spacing={2}
       >
-       <ContainerRequisitionGetAxios posts={posts}/>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">Post</Typography>
-          <Box
-            component="form"
-            onSubmit={handlePost}
-            sx={{
-              flex: 1,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Box sx={{ margin: "1rem", textAlign: "center" }}>
-              <Typography>
-                Aqui temos um user mockado que sera enviado
-              </Typography>
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{
-                  width: "80%",
-                  height: "4rem",
-                  backgroundColor: "yellow",
-                  margin: "1rem",
-                }}
-              >
-                Submit
-              </Button>
-              {postSubmited ? (
-                <Typography>Verifique o console</Typography>
-              ) : (
-                <></>
-              )}
-            </Box>
-          </Box>
-        </Grid>
+        <ContainerRequisitionGetAxios posts={posts} />
+        <ContainerRequistionPostAxios
+          handlePost={handlePost}
+          postSubmited={postSubmited}
+        />
         <Grid
           size={3}
           sx={{
