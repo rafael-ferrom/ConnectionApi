@@ -18,6 +18,7 @@ import type { toDo } from "../../models/toDo";
 import TableInfos from "../../components/TableInfos/TableInfos";
 import ContainerRequisitionFetchThunk from "../../components/ContainerRequisitionFetchThunk/ContainerRequisitionFetchThunk";
 import ContainerRequisitionPostThunk from "../../components/ContainerRequisitionPostThunk/ContainerRequisitionPostThunk";
+import ContainerRequisitionEditThunk from "../../components/ContainerRequisitionEditThunk/ContainerRequisitionEditThunk";
 
 const Thunk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Thunk");
@@ -96,25 +97,7 @@ const Thunk = () => {
       >
         <ContainerRequisitionFetchThunk todos={todos}/>
         <ContainerRequisitionPostThunk handleCreate={handleCreate}/>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">Put</Typography>
-          <Button
-            onClick={() => handleEdit(todo)}
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Put
-          </Button>
-        </Grid>
+        <ContainerRequisitionEditThunk handleEdit={handleEdit} todo={todo}/>
         <Grid
           size={3}
           sx={{
