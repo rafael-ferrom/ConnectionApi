@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { RowsTable } from "../../utils/Consts";
 import { useEffect, useState } from "react";
 import type { Post } from "../../models/Post";
@@ -11,6 +11,8 @@ import {
 import TableInfos from "../../components/TableInfos/TableInfos";
 import ContainerRequisitionGetAxios from "../../components/ContainerRequisitionGetAxios/ContainerRequisitionGetAxios";
 import ContainerRequistionPostAxios from "../../components/ContainerRequistionPostAxios/ContainerRequistionPostAxios";
+import ContainerRequisitionEditAxios from "../../components/ContainerRequisitionEditAxios/ContainerRequisitionEditAxios";
+import ContainerRequisitionDeleteAxios from "../../components/ContainerRequisitionDeleteAxios/ContainerRequisitionDeleteAxios";
 
 const AxiosPage = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Axios");
@@ -111,76 +113,8 @@ const AxiosPage = () => {
           handlePost={handlePost}
           postSubmited={postSubmited}
         />
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">PUT</Typography>
-          <Box
-            component="form"
-            onSubmit={handleUpdate}
-            sx={{
-              flex: 1,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Box sx={{ textAlign: "center" }}>
-              <Typography>
-                Aqui temos um user mockado que sera enviado
-              </Typography>
-              <Button
-                sx={{ backgroundColor: "blue", width: "10rem" }}
-                type="submit"
-              >
-                Put
-              </Button>
-            </Box>
-          </Box>
-        </Grid>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">Delete</Typography>
-          <Box
-            component="form"
-            onSubmit={handleDelete}
-            sx={{
-              flex: 1,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Box sx={{ textAlign: "center" }}>
-              <Typography>
-                Aqui temos um user mockado que sera enviado
-              </Typography>
-              <Button
-                type="submit"
-                sx={{ backgroundColor: "blue", width: "10rem" }}
-              >
-                Delete
-              </Button>
-            </Box>
-          </Box>
-        </Grid>
+        <ContainerRequisitionEditAxios handleUpdate={handleUpdate}/>
+        <ContainerRequisitionDeleteAxios handleDelete={handleDelete}/>
       </Grid>
     </Box>
   );
