@@ -16,6 +16,7 @@ import {
 import type { CreateTodoDTO } from "../../dtos/CreateTodoDTO";
 import type { toDo } from "../../models/toDo";
 import TableInfos from "../../components/TableInfos/TableInfos";
+import ContainerRequisitionFetchThunk from "../../components/ContainerRequisitionFetchThunk/ContainerRequisitionFetchThunk";
 
 const Thunk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Thunk");
@@ -92,24 +93,7 @@ const Thunk = () => {
         container
         spacing={2}
       >
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4"> Get </Typography>
-          <Box>
-            {todos.slice(0, 15).map((t) => (
-              <Typography key={t.id}>{t.title}</Typography>
-            ))}
-          </Box>
-        </Grid>
+        <ContainerRequisitionFetchThunk todos={todos}/>
         <Grid
           size={3}
           sx={{
