@@ -13,6 +13,7 @@ import {
 } from "../../services/rtkComments";
 import type { Comment } from "../../models/Comment";
 import TableInfos from "../../components/TableInfos/TableInfos";
+import ContainerRequisitionFetchRtk from "../../components/ContainerRequisitionFetchRtk/ContainerRequisitionFetchRtk";
 
 const Rtk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "RTK");
@@ -98,24 +99,7 @@ const Rtk = () => {
         container
         spacing={2}
       >
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">Get</Typography>
-          {data?.slice(0, 7).map((c) => (
-            <Box key={c.id}>
-              <Typography>{c.name}</Typography>
-            </Box>
-          ))}
-        </Grid>
+        <ContainerRequisitionFetchRtk data={data}/>
         <Grid
           size={3}
           sx={{
