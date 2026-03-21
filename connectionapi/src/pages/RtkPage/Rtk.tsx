@@ -15,6 +15,7 @@ import type { Comment } from "../../models/Comment";
 import TableInfos from "../../components/TableInfos/TableInfos";
 import ContainerRequisitionFetchRtk from "../../components/ContainerRequisitionFetchRtk/ContainerRequisitionFetchRtk";
 import ContainerRequisitionPostRtk from "../../components/ContainerRequisitionPostRtk/ContainerRequisitionPostRtk";
+import ContainerRequisitionEditRtk from "../../components/ContainerRequisitionEditRtk/ContainerRequisitionEditRtk";
 
 const Rtk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "RTK");
@@ -102,25 +103,7 @@ const Rtk = () => {
       >
         <ContainerRequisitionFetchRtk data={data}/>
         <ContainerRequisitionPostRtk handleCreate={handleCreate}/>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">Put</Typography>
-          <Button
-            onClick={handleEdit}
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Put
-          </Button>
-        </Grid>
+        <ContainerRequisitionEditRtk handleEdit={handleEdit}/>
         <Grid
           size={3}
           sx={{
