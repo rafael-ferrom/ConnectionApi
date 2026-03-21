@@ -14,6 +14,7 @@ import {
 import type { Comment } from "../../models/Comment";
 import TableInfos from "../../components/TableInfos/TableInfos";
 import ContainerRequisitionFetchRtk from "../../components/ContainerRequisitionFetchRtk/ContainerRequisitionFetchRtk";
+import ContainerRequisitionPostRtk from "../../components/ContainerRequisitionPostRtk/ContainerRequisitionPostRtk";
 
 const Rtk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "RTK");
@@ -100,25 +101,7 @@ const Rtk = () => {
         spacing={2}
       >
         <ContainerRequisitionFetchRtk data={data}/>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">Post</Typography>
-          <Button
-            onClick={handleCreate}
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Post
-          </Button>
-        </Grid>
+        <ContainerRequisitionPostRtk handleCreate={handleCreate}/>
         <Grid
           size={3}
           sx={{
