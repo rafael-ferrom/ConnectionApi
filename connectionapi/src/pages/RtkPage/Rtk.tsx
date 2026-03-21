@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Grid,
   Typography,
 } from "@mui/material";
@@ -16,6 +15,7 @@ import TableInfos from "../../components/TableInfos/TableInfos";
 import ContainerRequisitionFetchRtk from "../../components/ContainerRequisitionFetchRtk/ContainerRequisitionFetchRtk";
 import ContainerRequisitionPostRtk from "../../components/ContainerRequisitionPostRtk/ContainerRequisitionPostRtk";
 import ContainerRequisitionEditRtk from "../../components/ContainerRequisitionEditRtk/ContainerRequisitionEditRtk";
+import ContainerRequisitionDeleteRtk from "../../components/ContainerRequisitionDeleteRtk/ContainerRequisitionDeleteRtk";
 
 const Rtk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "RTK");
@@ -104,25 +104,7 @@ const Rtk = () => {
         <ContainerRequisitionFetchRtk data={data}/>
         <ContainerRequisitionPostRtk handleCreate={handleCreate}/>
         <ContainerRequisitionEditRtk handleEdit={handleEdit}/>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">Delete</Typography>
-          <Button
-            onClick={handleDelete}
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Delete
-          </Button>
-        </Grid>
+        <ContainerRequisitionDeleteRtk handleDelete={handleDelete}/>
       </Grid>
     </Box>
   );
