@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Grid,
   Typography,
 } from "@mui/material";
@@ -19,6 +18,7 @@ import TableInfos from "../../components/TableInfos/TableInfos";
 import ContainerRequisitionFetchThunk from "../../components/ContainerRequisitionFetchThunk/ContainerRequisitionFetchThunk";
 import ContainerRequisitionPostThunk from "../../components/ContainerRequisitionPostThunk/ContainerRequisitionPostThunk";
 import ContainerRequisitionEditThunk from "../../components/ContainerRequisitionEditThunk/ContainerRequisitionEditThunk";
+import ContainerRequisitionDeleteThunk from "../../components/ContainerRequisitionDeleteThunk/ContainerRequisitionDeleteThunk";
 
 const Thunk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Thunk");
@@ -98,25 +98,7 @@ const Thunk = () => {
         <ContainerRequisitionFetchThunk todos={todos}/>
         <ContainerRequisitionPostThunk handleCreate={handleCreate}/>
         <ContainerRequisitionEditThunk handleEdit={handleEdit} todo={todo}/>
-        <Grid
-          size={3}
-          sx={{
-            border: "1px solid #ddd",
-            padding: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h4">Delete</Typography>
-          <Button
-            onClick={() => handleDelete(5)}
-            sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-          >
-            Delete
-          </Button>
-        </Grid>
+        <ContainerRequisitionDeleteThunk handleDelete={handleDelete}/>
       </Grid>
     </Box>
   );
