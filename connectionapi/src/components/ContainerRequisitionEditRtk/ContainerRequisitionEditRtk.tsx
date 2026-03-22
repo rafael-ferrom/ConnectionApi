@@ -1,5 +1,6 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { StyledContainerRequistion } from "../../style/StyledContainerRequisition";
+import { StyledButtonRequisition } from "../../style/StyledButtonRequisition";
 
 interface IContainerRequisitionEditRtkProps {
   handleEdit: () => void;
@@ -9,12 +10,11 @@ const ContainerRequisitionEditRtk = ({handleEdit}:IContainerRequisitionEditRtkPr
   return (
     <StyledContainerRequistion size={3}>
       <Typography variant="h4">Put</Typography>
-      <Button
+      <StyledButtonRequisition
         onClick={handleEdit}
-        sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
       >
         Put
-      </Button>
+      </StyledButtonRequisition>
     </StyledContainerRequistion>
   );
 };

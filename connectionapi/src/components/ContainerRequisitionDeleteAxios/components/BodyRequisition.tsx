@@ -1,6 +1,7 @@
-import { Button, Typography } from "@mui/material"
+import { Typography } from "@mui/material"
 import { StyledBoxAxios } from "../../../style/StyledBoxAxios"
 import { StyledBoxPostFetch } from "../../../style/StyledBoxRequisition"
+import { StyledButtonRequisition } from "../../../style/StyledButtonRequisition"
 
 interface IBodyRequisitionProps{
     handleDelete: (e: React.FormEvent) => void
@@ -15,12 +16,11 @@ const BodyRequisition = ({handleDelete}:IBodyRequisitionProps) => {
               <Typography>
                 Aqui temos um user mockado que sera enviado
               </Typography>
-              <Button
+              <StyledButtonRequisition
                 type="submit"
-                sx={{ backgroundColor: "blue", width: "10rem" }}
               >
                 Delete
-              </Button>
+              </StyledButtonRequisition>
             </StyledBoxPostFetch>
           </StyledBoxAxios>
   )

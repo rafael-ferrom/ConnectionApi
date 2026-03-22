@@ -1,5 +1,6 @@
-import { Button, Typography } from "@mui/material";
+import {Typography } from "@mui/material";
 import { StyledContainerRequistion } from "../../style/StyledContainerRequisition";
+import { StyledButtonRequisition } from "../../style/StyledButtonRequisition";
 
 interface IContainerRequisitionDeleteRtkProps {
   handleDelete: () => void;
@@ -11,12 +12,11 @@ const ContainerRequisitionDeleteRtk = ({
   return (
     <StyledContainerRequistion size={3}>
       <Typography variant="h4">Delete</Typography>
-      <Button
+      <StyledButtonRequisition
         onClick={handleDelete}
-        sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
       >
         Delete
-      </Button>
+      </StyledButtonRequisition>
     </StyledContainerRequistion>
   );
 };

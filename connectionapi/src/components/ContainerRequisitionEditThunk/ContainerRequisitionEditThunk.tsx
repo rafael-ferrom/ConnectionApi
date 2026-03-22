@@ -1,22 +1,23 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { StyledContainerRequistion } from "../../style/StyledContainerRequisition";
 import type { toDo } from "../../models/toDo";
+import { StyledButtonRequisition } from "../../style/StyledButtonRequisition";
 
 interface IContainerRequisitionEditThunkProps {
-    handleEdit: (value: toDo) => void
-    todo: toDo
+  handleEdit: (value: toDo) => void;
+  todo: toDo;
 }
 
-const ContainerRequisitionEditThunk = ({handleEdit, todo}:IContainerRequisitionEditThunkProps) => {
+const ContainerRequisitionEditThunk = ({
+  handleEdit,
+  todo,
+}: IContainerRequisitionEditThunkProps) => {
   return (
     <StyledContainerRequistion size={3}>
       <Typography variant="h4">Put</Typography>
-      <Button
-        onClick={() => handleEdit(todo)}
-        sx={{ backgroundColor: "blue", alignItems: "end", width: "10rem" }}
-      >
+      <StyledButtonRequisition onClick={() => handleEdit(todo)}>
         Put
-      </Button>
+      </StyledButtonRequisition>
     </StyledContainerRequistion>
   );
 };

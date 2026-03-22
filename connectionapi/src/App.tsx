@@ -6,7 +6,6 @@ import AxiosPage from "./pages/AxiosPage/AxiosPage";
 import Thunk from "./pages/ThunkPage/Thunk";
 import Rtk from "./pages/RtkPage/Rtk";
 import FetchPage from "./pages/FetchPage/FetchPage";
-import MoreInfo from "./pages/MoreInfoPage/MoreInfo";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
@@ -21,10 +20,6 @@ function App() {
       {
         path: "/",
         element: <Home></Home> ,
-      },
-      {
-        path:"/More",
-        element:<MoreInfo></MoreInfo>
       },
       {
         path: "/Fetch",

@@ -1,6 +1,7 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { StyledBoxAxios } from "../../../style/StyledBoxAxios";
 import { StyledBoxPostFetch } from "../../../style/StyledBoxRequisition";
+import { StyledButtonRequisition } from "../../../style/StyledButtonRequisition";
 
 interface IBodyRequisitionProps{
     handleUpdate: (e: React.FormEvent) => void
@@ -11,9 +12,9 @@ const BodyRequisition = ({handleUpdate}:IBodyRequisitionProps) => {
     <StyledBoxAxios onSubmit={handleUpdate}>
       <StyledBoxPostFetch>
         <Typography>Aqui temos um user mockado que sera enviado</Typography>
-        <Button sx={{ backgroundColor: "blue", width: "10rem" }} type="submit">
+        <StyledButtonRequisition type="submit">
           Put
-        </Button>
+        </StyledButtonRequisition>
       </StyledBoxPostFetch>
     </StyledBoxAxios>
   );

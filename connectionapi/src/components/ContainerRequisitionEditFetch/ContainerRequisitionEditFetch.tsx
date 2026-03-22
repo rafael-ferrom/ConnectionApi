@@ -32,14 +32,6 @@ const ContainerRequisitionEditFetch = ({name,email,setName,setEmail}:IContainerR
   return (
     <StyledContainerRequistion
       size={3}
-      sx={{
-        border: "1px solid #ddd",
-        padding: 2,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-evenly",
-        alignItems: "center",
-      }}
     >
       <Typography variant="h4">PUT</Typography>
       <FormFieldDeleteFetch
