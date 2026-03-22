@@ -9,7 +9,7 @@ const ContainerRequisitionDeleteRtk = ({
   handleDelete,
 }: IContainerRequisitionDeleteRtkProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4">Delete</Typography>
       <Button
         onClick={handleDelete}

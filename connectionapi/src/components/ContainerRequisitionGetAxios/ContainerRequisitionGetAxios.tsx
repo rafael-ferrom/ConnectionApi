@@ -8,7 +8,7 @@ interface IContainerRequisitionGetAxios{
 
 const ContainerRequisitionGetAxios = ({posts}:IContainerRequisitionGetAxios) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
         <Typography variant="h4">GET</Typography>
           {posts?.slice(0, 15).map((post) => (
             <Typography>{post.title}</Typography>

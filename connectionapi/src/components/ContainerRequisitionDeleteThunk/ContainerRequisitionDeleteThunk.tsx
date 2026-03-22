@@ -7,7 +7,7 @@ interface IContainerRequisitionDeleteThunkProps{
 
 const ContainerRequisitionDeleteThunk = ({handleDelete}:IContainerRequisitionDeleteThunkProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4">Delete</Typography>
       <Button
         onClick={() => handleDelete(5)}

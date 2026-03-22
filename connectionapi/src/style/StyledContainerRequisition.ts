@@ -5,6 +5,6 @@ export const StyledContainerRequistion = styled(Grid)({
   padding: 2,
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-between",
+  justifyContent: "space-evenly",
   alignItems: "center",
 });

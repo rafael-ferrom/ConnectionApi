@@ -7,7 +7,7 @@ interface IContainerRequisitionEditRtkProps {
 
 const ContainerRequisitionEditRtk = ({handleEdit}:IContainerRequisitionEditRtkProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4">Put</Typography>
       <Button
         onClick={handleEdit}

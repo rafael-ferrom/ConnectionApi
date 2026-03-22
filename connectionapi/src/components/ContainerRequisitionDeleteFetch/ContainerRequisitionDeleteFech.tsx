@@ -12,7 +12,7 @@ interface IContainerRequisitionDeleteFetchProps{
 
 const ContainerRequisitionDeleteFech = ({userId, setUserId, message, handleDelete}: IContainerRequisitionDeleteFetchProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
         <Typography variant="h4">DELETE</Typography>
           <Box>
             <InputDeleteFetch setUserId={setUserId} userId={userId}/>

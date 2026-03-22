@@ -7,7 +7,7 @@ interface IContainerRequisitionPostRtkProps {
 
 const ContainerRequisitionPostRtk = ({handleCreate}:IContainerRequisitionPostRtkProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4">Post</Typography>
       <Button
         onClick={handleCreate}

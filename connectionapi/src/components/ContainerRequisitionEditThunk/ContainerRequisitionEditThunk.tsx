@@ -9,7 +9,7 @@ interface IContainerRequisitionEditThunkProps {
 
 const ContainerRequisitionEditThunk = ({handleEdit, todo}:IContainerRequisitionEditThunkProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4">Put</Typography>
       <Button
         onClick={() => handleEdit(todo)}

@@ -8,7 +8,7 @@ interface IContainerRequisitionFetchRtkProps{
 
 const ContainerRequisitionFetchRtk = ({data}:IContainerRequisitionFetchRtkProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4">Get</Typography>
       {data?.slice(0, 7).map((c) => (
         <Box key={c.id}>

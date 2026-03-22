@@ -8,7 +8,7 @@ interface IContainerRequisitionEditAxiosProps{
 
 const ContainerRequisitionEditAxios = ({handleUpdate}:IContainerRequisitionEditAxiosProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
         <Typography variant="h4">PUT</Typography>
           <BodyRequisition handleUpdate={handleUpdate}/>
     </StyledContainerRequistion>

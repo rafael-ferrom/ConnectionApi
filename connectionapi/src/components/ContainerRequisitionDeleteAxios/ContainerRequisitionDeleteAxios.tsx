@@ -10,7 +10,7 @@ const ContainerRequisitionDeleteAxios = ({
   handleDelete,
 }: IContainerRequisitionDeleteAxios) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4">Delete</Typography>
       <BodyRequisition handleDelete={handleDelete} />
     </StyledContainerRequistion>

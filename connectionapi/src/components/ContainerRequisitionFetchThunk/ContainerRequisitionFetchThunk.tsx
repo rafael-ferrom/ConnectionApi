@@ -8,7 +8,7 @@ interface IContainerRequisitionFetchThunkProps{
 
 const ContainerRequisitionFetchThunk = ({todos}:IContainerRequisitionFetchThunkProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4"> Get </Typography>
       <Box>
         {todos.slice(0, 15).map((t) => (

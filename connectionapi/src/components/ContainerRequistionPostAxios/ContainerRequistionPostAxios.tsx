@@ -9,7 +9,7 @@ interface IContainerRequistionPostAxiosProps{
 
 const ContainerRequistionPostAxios = ({handlePost, postSubmited}:IContainerRequistionPostAxiosProps) => {
   return (
-    <StyledContainerRequistion>
+    <StyledContainerRequistion size={3}>
       <Typography variant="h4">Post</Typography>
           <BodyRequisition handlePost={handlePost} postSubmited={postSubmited}/>
     </StyledContainerRequistion>
