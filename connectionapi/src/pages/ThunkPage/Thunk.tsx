@@ -1,150 +1,82 @@
-import { Box, Button, Checkbox, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
-import { ColumnTable, RowsTable } from "../../utils/Consts";
+import { Typography } from "@mui/material";
+import { RowsTable } from "../../utils/Consts";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useEffect } from "react";
-import { createThunkTodo, deleteThunkTodo, editThunkTodo, getThunkTodo } from "../../services/thunkTodo";
+import {
+  createThunkTodo,
+  deleteThunkTodo,
+  editThunkTodo,
+  getThunkTodo,
+} from "../../services/thunkTodo";
 import type { CreateTodoDTO } from "../../dtos/CreateTodoDTO";
 import type { toDo } from "../../models/toDo";
+import TableInfos from "../../components/TableInfos/TableInfos";
+import ContainerRequisitionFetchThunk from "../../components/ContainerRequisitionFetchThunk/ContainerRequisitionFetchThunk";
+import ContainerRequisitionPostThunk from "../../components/ContainerRequisitionPostThunk/ContainerRequisitionPostThunk";
+import ContainerRequisitionEditThunk from "../../components/ContainerRequisitionEditThunk/ContainerRequisitionEditThunk";
+import ContainerRequisitionDeleteThunk from "../../components/ContainerRequisitionDeleteThunk/ContainerRequisitionDeleteThunk";
+import { StyledBoxPage } from "../../style/StyledBoxPage";
+import { StyledBoxPageTitle } from "../../style/StyledBoxPageTitle";
+import { StyledBoxPageTable } from "../../style/StyledBoxPageTable";
+import { StyledGridPage } from "../../style/StyledGridPage";
 
 const Thunk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Thunk");
-  const dispatch = useAppDispatch()
-  const {todos} = useAppSelector(state => state.todos )
+  const dispatch = useAppDispatch();
+  const { todos } = useAppSelector((state) => state.todos);
 
-  const todo:toDo = {
-    id:100,
+  const todo: toDo = {
+    id: 100,
     userId: 11,
-    title:"New",
-    completed: false
-  }
+    title: "New",
+    completed: false,
+  };
 
   const mockTodo: CreateTodoDTO = {
     userId: 11,
-    title:"New mock",
-    completed: true
-  }
+    title: "New mock",
+    completed: true,
+  };
 
   const handleDelete = (id: number) => {
-    dispatch(deleteThunkTodo(id))
-  }
+    dispatch(deleteThunkTodo(id));
+  };
 
-  useEffect(() =>{
-    dispatch(getThunkTodo())
-  },[])
+  useEffect(() => {
+    dispatch(getThunkTodo());
+  }, []);
 
   const handleCreate = () => {
-    dispatch(createThunkTodo(mockTodo))
-  }
+    dispatch(createThunkTodo(mockTodo));
+  };
 
   const handleEdit = (todo: toDo) => {
-    const updateTodo:toDo = {
-    ...todo,
-    title: "titulo atalizado"
-  }
-    dispatch(editThunkTodo(updateTodo))
-  }
+    const updateTodo: toDo = {
+      ...todo,
+      title: "titulo atalizado",
+    };
+    dispatch(editThunkTodo(updateTodo));
+  };
 
-
-    return (
-      <Box
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+  return (
+    <StyledBoxPage>
+      <StyledBoxPageTitle>
+        <Typography variant="h1">{specifyRequisition?.name}</Typography>
+      </StyledBoxPageTitle>
+      <StyledBoxPageTable>
+        <TableInfos specifyRequisition={specifyRequisition} />
+      </StyledBoxPageTable>
+      <StyledGridPage
+        container
+        spacing={2}
       >
-        <Box
-          sx={{
-            backgroundColor: "green",
-            width: "40%",
-            height: "8rem",
-            margin: "2rem",
-            textAlign: "center",
-          }}
-        >
-          {" "}
-          <Typography variant="h1">{specifyRequisition?.name}</Typography>
-        </Box>
-        <Box
-          sx={{
-            backgroundColor: "blue",
-            width: "80%",
-            height: "8rem",
-            margin: "2rem",
-          }}
-        >
-          <TableContainer sx={{ border: "2px solid red" }}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  {ColumnTable.map((col) => (
-                    <TableCell key={col.id}>{col.label}</TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow key={specifyRequisition?.id}>
-                  <TableCell>{specifyRequisition?.name}</TableCell>
-                  <TableCell>
-                    {specifyRequisition?.hasExternalLib ? (
-                      <Checkbox disabled checked></Checkbox>
-                    ) : (
-                      <Checkbox disabled></Checkbox>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {specifyRequisition?.hasAutomaticCache ? (
-                      <Checkbox disabled checked></Checkbox>
-                    ) : (
-                      <Checkbox disabled></Checkbox>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {specifyRequisition?.hasLoading ? (
-                      <Checkbox disabled checked></Checkbox>
-                    ) : (
-                      <Checkbox disabled></Checkbox>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {specifyRequisition?.goodForBigProjects ? (
-                      <Checkbox disabled checked></Checkbox>
-                    ) : (
-                      <Checkbox disabled></Checkbox>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {specifyRequisition?.bigLearningCourve ? (
-                      <Checkbox disabled checked></Checkbox>
-                    ) : (
-                      <Checkbox disabled></Checkbox>
-                    )}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Box>
-        <Grid sx={{ width: "80%", height: "40rem", marginBottom:"2rem",textAlign:"center", backgroundColor:"gray"  }} container spacing={2}>
-        <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4"> Get </Typography>
-          <Box>
-            {todos.slice(0,15).map((t) =>(
-              <Typography key={t.id}>{t.title}</Typography>
-            ))}
-          </Box>
-        </Grid>
-        <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Post</Typography>
-          <Button onClick={handleCreate} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Post</Button>
-        </Grid>
-        <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Put</Typography>
-          <Button onClick={() => handleEdit(todo)} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Put</Button>
-        </Grid>
-        <Grid size={3} sx={{ border: "1px solid #ddd", padding: 2, display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center" }}>
-          <Typography variant="h4">Delete</Typography>
-          <Button onClick={() => handleDelete(5)} sx={{backgroundColor:"blue", alignItems:"end", width:"10rem"}}>Delete</Button>
-        </Grid>
-      </Grid>
-      </Box>
-    );
-}
+        <ContainerRequisitionFetchThunk todos={todos} />
+        <ContainerRequisitionPostThunk handleCreate={handleCreate} />
+        <ContainerRequisitionEditThunk handleEdit={handleEdit} todo={todo} />
+        <ContainerRequisitionDeleteThunk handleDelete={handleDelete} />
+      </StyledGridPage>
+    </StyledBoxPage>
+  );
+};
 
-export default Thunk
+export default Thunk;

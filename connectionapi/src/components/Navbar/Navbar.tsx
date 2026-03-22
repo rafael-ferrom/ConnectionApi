@@ -9,12 +9,11 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <Typography sx={{ padding: "1rem" }} variant="h4">
+      <Typography sx={{ padding: "1rem" }} variant="h4" color="white">
         Requisition App
       </Typography>
       <Box sx={{display:"flex", justifyContent:"space-between", flexDirection:"row",alignItems: "center",width:"50%"}}>
         <Link underline="hover" sx={{color:"black"}} href="/">HOME</Link>
-        <Link underline="hover" sx={{color:"black"}} href="/More">MORE</Link>
         <Link underline="hover" sx={{color:"black"}} href="/Fetch">FETCH</Link>
         <Link underline="hover" sx={{color:"black"}} href="/Axios"> AXIOS</Link>
         <Link underline="hover" sx={{color:"black"}} href="/Thunk">THUNK</Link>
