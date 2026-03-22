@@ -1,8 +1,4 @@
-import {
-  Box,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 import { RowsTable } from "../../utils/Consts";
 import { useEffect, useState } from "react";
 
@@ -14,6 +10,10 @@ import ContainerRequisitionPostFetch from "../../components/ContainerRequisition
 import ContainerRequisitionEditFetch from "../../components/ContainerRequisitionEditFetch/ContainerRequisitionEditFetch";
 import ContainerRequisitionDeleteFech from "../../components/ContainerRequisitionDeleteFetch/ContainerRequisitionDeleteFech";
 import TableInfos from "../../components/TableInfos/TableInfos";
+import { StyledBoxPage } from "../../style/StyledBoxPage";
+import { StyledBoxPageTitle } from "../../style/StyledBoxPageTitle";
+import { StyledBoxPageTable } from "../../style/StyledBoxPageTable";
+import { StyledGridPage } from "../../style/StyledGridPage";
 
 const FetchPage = () => {
   const [data, setData] = useState<IUsersJPH[]>([]);
@@ -38,8 +38,6 @@ const FetchPage = () => {
     }));
   };
 
-  
-
   const handleSubmitPost = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -59,13 +57,13 @@ const FetchPage = () => {
   };
 
   const handleDelete = async () => {
-  try {
-    await deleteUser(userId)
-    setMessage("Usuário removido")
-  } catch {
-    setMessage("Erro ao remover usuário")
-  }
-}
+    try {
+      await deleteUser(userId);
+      setMessage("Usuário removido");
+    } catch {
+      setMessage("Erro ao remover usuário");
+    }
+  };
 
   useEffect(() => {
     async function loadData() {
@@ -88,48 +86,38 @@ const FetchPage = () => {
   }
 
   return (
-    <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      <Box
-        sx={{
-          backgroundColor: "green",
-          width: "40%",
-          height: "8rem",
-          margin: "2rem",
-          textAlign: "center",
-        }}
-      >
-        {" "}
+    <StyledBoxPage>
+      <StyledBoxPageTitle>
         <Typography variant="h1">{specifyRequisition?.name}</Typography>
-      </Box>
-      <Box
-        sx={{
-          backgroundColor: "blue",
-          width: "80%",
-          height: "8rem",
-          margin: "2rem",
-        }}
-      >
-        <TableInfos specifyRequisition={specifyRequisition}/>
-      </Box>
-      <Grid
-        sx={{
-          width: "80%",
-          height: "40rem",
-          marginBottom: "2rem",
-          textAlign: "center",
-          backgroundColor: "gray",
-        }}
+      </StyledBoxPageTitle>
+      <StyledBoxPageTable>
+        <TableInfos specifyRequisition={specifyRequisition} />
+      </StyledBoxPageTable>
+      <StyledGridPage
         container
         spacing={2}
       >
-        <ContainerRequisitionGetFetch title="GET" data={data}/>
-        <ContainerRequisitionPostFetch title="POST" formData={formData} handleChange={handleChange} handlePost={handleSubmitPost}></ContainerRequisitionPostFetch>
-        <ContainerRequisitionEditFetch name={name} email={email} setName={setName} setEmail={setEmail}/>
-        <ContainerRequisitionDeleteFech handleDelete={handleDelete} message={message} setUserId={setUserId} userId={userId}/>
-      </Grid>
-    </Box>
+        <ContainerRequisitionGetFetch title="GET" data={data} />
+        <ContainerRequisitionPostFetch
+          title="POST"
+          formData={formData}
+          handleChange={handleChange}
+          handlePost={handleSubmitPost}
+        ></ContainerRequisitionPostFetch>
+        <ContainerRequisitionEditFetch
+          name={name}
+          email={email}
+          setName={setName}
+          setEmail={setEmail}
+        />
+        <ContainerRequisitionDeleteFech
+          handleDelete={handleDelete}
+          message={message}
+          setUserId={setUserId}
+          userId={userId}
+        />
+      </StyledGridPage>
+    </StyledBoxPage>
   );
 };
 

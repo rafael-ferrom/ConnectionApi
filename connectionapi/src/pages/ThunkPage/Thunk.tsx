@@ -1,8 +1,4 @@
-import {
-  Box,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 import { RowsTable } from "../../utils/Consts";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useEffect } from "react";
@@ -19,6 +15,10 @@ import ContainerRequisitionFetchThunk from "../../components/ContainerRequisitio
 import ContainerRequisitionPostThunk from "../../components/ContainerRequisitionPostThunk/ContainerRequisitionPostThunk";
 import ContainerRequisitionEditThunk from "../../components/ContainerRequisitionEditThunk/ContainerRequisitionEditThunk";
 import ContainerRequisitionDeleteThunk from "../../components/ContainerRequisitionDeleteThunk/ContainerRequisitionDeleteThunk";
+import { StyledBoxPage } from "../../style/StyledBoxPage";
+import { StyledBoxPageTitle } from "../../style/StyledBoxPageTitle";
+import { StyledBoxPageTable } from "../../style/StyledBoxPageTable";
+import { StyledGridPage } from "../../style/StyledGridPage";
 
 const Thunk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "Thunk");
@@ -59,48 +59,23 @@ const Thunk = () => {
   };
 
   return (
-    <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      <Box
-        sx={{
-          backgroundColor: "green",
-          width: "40%",
-          height: "8rem",
-          margin: "2rem",
-          textAlign: "center",
-        }}
-      >
-        {" "}
+    <StyledBoxPage>
+      <StyledBoxPageTitle>
         <Typography variant="h1">{specifyRequisition?.name}</Typography>
-      </Box>
-      <Box
-        sx={{
-          backgroundColor: "blue",
-          width: "80%",
-          height: "8rem",
-          margin: "2rem",
-        }}
-      >
+      </StyledBoxPageTitle>
+      <StyledBoxPageTable>
         <TableInfos specifyRequisition={specifyRequisition} />
-      </Box>
-      <Grid
-        sx={{
-          width: "80%",
-          height: "40rem",
-          marginBottom: "2rem",
-          textAlign: "center",
-          backgroundColor: "gray",
-        }}
+      </StyledBoxPageTable>
+      <StyledGridPage
         container
         spacing={2}
       >
-        <ContainerRequisitionFetchThunk todos={todos}/>
-        <ContainerRequisitionPostThunk handleCreate={handleCreate}/>
-        <ContainerRequisitionEditThunk handleEdit={handleEdit} todo={todo}/>
-        <ContainerRequisitionDeleteThunk handleDelete={handleDelete}/>
-      </Grid>
-    </Box>
+        <ContainerRequisitionFetchThunk todos={todos} />
+        <ContainerRequisitionPostThunk handleCreate={handleCreate} />
+        <ContainerRequisitionEditThunk handleEdit={handleEdit} todo={todo} />
+        <ContainerRequisitionDeleteThunk handleDelete={handleDelete} />
+      </StyledGridPage>
+    </StyledBoxPage>
   );
 };
 

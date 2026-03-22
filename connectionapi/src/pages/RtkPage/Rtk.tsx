@@ -1,8 +1,4 @@
-import {
-  Box,
-  Grid,
-  Typography,
-} from "@mui/material";
+import {Typography } from "@mui/material";
 import { RowsTable } from "../../utils/Consts";
 import {
   useCreateCommentMutation,
@@ -16,6 +12,10 @@ import ContainerRequisitionFetchRtk from "../../components/ContainerRequisitionF
 import ContainerRequisitionPostRtk from "../../components/ContainerRequisitionPostRtk/ContainerRequisitionPostRtk";
 import ContainerRequisitionEditRtk from "../../components/ContainerRequisitionEditRtk/ContainerRequisitionEditRtk";
 import ContainerRequisitionDeleteRtk from "../../components/ContainerRequisitionDeleteRtk/ContainerRequisitionDeleteRtk";
+import { StyledBoxPage } from "../../style/StyledBoxPage";
+import { StyledBoxPageTitle } from "../../style/StyledBoxPageTitle";
+import { StyledBoxPageTable } from "../../style/StyledBoxPageTable";
+import { StyledGridPage } from "../../style/StyledGridPage";
 
 const Rtk = () => {
   const specifyRequisition = RowsTable.find((opt) => opt.name === "RTK");
@@ -65,48 +65,23 @@ const Rtk = () => {
   };
 
   return (
-    <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      <Box
-        sx={{
-          backgroundColor: "green",
-          width: "40%",
-          height: "8rem",
-          margin: "2rem",
-          textAlign: "center",
-        }}
-      >
-        {" "}
+    <StyledBoxPage>
+      <StyledBoxPageTitle>
         <Typography variant="h1">{specifyRequisition?.name}</Typography>
-      </Box>
-      <Box
-        sx={{
-          backgroundColor: "blue",
-          width: "80%",
-          height: "8rem",
-          margin: "2rem",
-        }}
-      >
+      </StyledBoxPageTitle>
+      <StyledBoxPageTable>
         <TableInfos specifyRequisition={specifyRequisition} />
-      </Box>
-      <Grid
-        sx={{
-          width: "80%",
-          height: "40rem",
-          marginBottom: "2rem",
-          textAlign: "center",
-          backgroundColor: "gray",
-        }}
+      </StyledBoxPageTable>
+      <StyledGridPage
         container
         spacing={2}
       >
-        <ContainerRequisitionFetchRtk data={data}/>
-        <ContainerRequisitionPostRtk handleCreate={handleCreate}/>
-        <ContainerRequisitionEditRtk handleEdit={handleEdit}/>
-        <ContainerRequisitionDeleteRtk handleDelete={handleDelete}/>
-      </Grid>
-    </Box>
+        <ContainerRequisitionFetchRtk data={data} />
+        <ContainerRequisitionPostRtk handleCreate={handleCreate} />
+        <ContainerRequisitionEditRtk handleEdit={handleEdit} />
+        <ContainerRequisitionDeleteRtk handleDelete={handleDelete} />
+      </StyledGridPage>
+    </StyledBoxPage>
   );
 };
 
